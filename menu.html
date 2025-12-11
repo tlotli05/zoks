@@ -21,6 +21,8 @@
             --gradient-gold: linear-gradient(135deg, var(--gold), #FFD166);
             --gradient-fire: linear-gradient(135deg, var(--fire-orange), #FF9E5E);
             --gradient-charcoal: linear-gradient(135deg, var(--charcoal), #1E1E1E);
+            --success-green: #4CAF50;
+            --spicy-red: #FF5252;
         }
         
         * {
@@ -117,6 +119,12 @@
                 opacity: 1;
                 transform: scale(1);
             }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .fade-in-left {
@@ -539,252 +547,546 @@
             display: block;
         }
         
-        /* ===== BAR MENU STYLES ===== */
+        /* ===== ENHANCED BAR MENU STYLES ===== */
         .bar-category {
-            margin-bottom: 60px;
-        }
-        
-        .bar-category h3 {
-            font-size: 1.8rem;
-            color: var(--gold);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(245, 160, 69, 0.3);
+            margin-bottom: 70px;
             position: relative;
-            opacity: 0;
         }
         
-        .bar-category h3:after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: var(--gradient-fire);
-        }
-        
-        .menu-items {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        .menu-item {
-            background: var(--gradient-charcoal);
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid rgba(224, 193, 90, 0.1);
-            transition: all 0.4s ease;
-            opacity: 0;
-        }
-        
-        .menu-item:hover {
-            border-color: rgba(224, 193, 90, 0.3);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
-        }
-        
-        .menu-item-name {
+        .bar-category-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .menu-item-name h4 {
-            font-size: 1.2rem;
-            color: var(--white);
-            font-weight: 600;
-        }
-        
-        .menu-item-price {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-        
-        .menu-item-description {
-            color: rgba(243, 231, 198, 0.8);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-        
-        /* ===== RESTAURANT MENU STYLES ===== */
-        .restaurant-category {
-            margin-bottom: 60px;
-        }
-        
-        .restaurant-category h3 {
-            font-size: 1.8rem;
-            color: var(--gold);
+            align-items: flex-end;
             margin-bottom: 30px;
             padding-bottom: 15px;
             border-bottom: 2px solid rgba(245, 160, 69, 0.3);
             position: relative;
-            opacity: 0;
         }
         
-        .restaurant-category h3:after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: var(--gradient-fire);
+        .bar-category-header h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
-        .food-items {
+        .bar-category-header h3 i {
+            color: var(--fire-orange);
+            font-size: 1.5rem;
+        }
+        
+        .bar-category-header h3:after {
+            display: none;
+        }
+        
+        .bar-category-tagline {
+            color: rgba(243, 231, 198, 0.8);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+        
+        .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 25px;
         }
         
-        .food-item {
+        .bar-menu-item {
             background: var(--gradient-charcoal);
             border-radius: 15px;
             padding: 25px;
             border: 1px solid rgba(224, 193, 90, 0.1);
             transition: all 0.4s ease;
             opacity: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
-        .food-item:hover {
+        .bar-menu-item:hover {
             border-color: rgba(224, 193, 90, 0.3);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             transform: translateY(-5px);
         }
         
-        .food-item-name {
+        .bar-item-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 10px;
-        }
-        
-        .food-item-name h4 {
-            font-size: 1.2rem;
-            color: var(--white);
-            font-weight: 600;
-            flex: 1;
-        }
-        
-        .food-item-price {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--gold);
-            margin-left: 15px;
-        }
-        
-        .food-item-description {
-            color: rgba(243, 231, 198, 0.8);
-            font-size: 0.95rem;
-            line-height: 1.5;
             margin-bottom: 15px;
         }
         
-        .food-item-additions {
+        .bar-item-name h4 {
+            font-size: 1.3rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .bar-item-origin {
+            font-size: 0.85rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        
+        .bar-item-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            text-align: right;
+            min-width: 100px;
+        }
+        
+        .bar-item-price .per-item {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(243, 231, 198, 0.7);
+            font-weight: 400;
+            margin-top: 5px;
+        }
+        
+        .bar-item-description {
+            color: rgba(243, 231, 198, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+        
+        .bar-item-features {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid rgba(243, 231, 198, 0.1);
         }
         
-        .additions-title {
-            font-size: 0.9rem;
+        .feature-tag {
+            background: rgba(224, 193, 90, 0.1);
             color: var(--gold);
-            margin-bottom: 10px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
         
-        .addition-item {
+        /* ===== ENHANCED RESTAURANT MENU STYLES ===== */
+        .restaurant-category {
+            margin-bottom: 70px;
+            position: relative;
+        }
+        
+        .category-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
+            align-items: flex-end;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(245, 160, 69, 0.3);
+            position: relative;
         }
         
-        .addition-name {
-            color: rgba(243, 231, 198, 0.9);
-        }
-        
-        .addition-price {
+        .category-header h3 {
+            font-size: 1.8rem;
             color: var(--gold);
-            font-weight: 600;
+            margin: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
-        /* ===== PLATTERS STYLES ===== */
-        .platters-grid {
+        .category-header h3 i {
+            color: var(--fire-orange);
+            font-size: 1.5rem;
+        }
+        
+        .category-header h3:after {
+            display: none;
+        }
+        
+        .category-tagline {
+            color: rgba(243, 231, 198, 0.8);
+            font-style: italic;
+            font-size: 0.95rem;
+            text-align: right;
+        }
+        
+        .menu-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
         
-        .platter-item {
+        .menu-card {
             background: var(--gradient-charcoal);
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px;
             border: 1px solid rgba(224, 193, 90, 0.1);
             transition: all 0.4s ease;
-            text-align: center;
             opacity: 0;
+            height: 100%;
+            position: relative;
         }
         
-        .platter-item:hover {
+        .menu-card:hover {
             border-color: rgba(224, 193, 90, 0.3);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             transform: translateY(-5px);
         }
         
-        .platter-name {
-            font-size: 1.3rem;
-            color: var(--white);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        
-        .platter-serves {
-            font-size: 0.9rem;
-            color: var(--gold);
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
         }
         
-        .platter-price {
+        .menu-card-name h4 {
+            font-size: 1.4rem;
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .menu-card-price {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--gold);
+            text-align: right;
+            min-width: 120px;
+        }
+        
+        .menu-card-description {
+            color: rgba(243, 231, 198, 0.9);
+            font-size: 1rem;
+            line-height: 1.7;
             margin-bottom: 20px;
         }
         
-        .platter-items {
+        .menu-card-highlights {
             list-style: none;
-            text-align: left;
             margin-bottom: 20px;
         }
         
-        .platter-items li {
-            padding: 5px 0;
+        .menu-card-highlights li {
+            padding: 8px 0;
             color: rgba(243, 231, 198, 0.9);
             font-size: 0.95rem;
             position: relative;
-            padding-left: 20px;
+            padding-left: 25px;
+            display: flex;
+            align-items: center;
         }
         
-        .platter-items li:before {
+        .menu-card-highlights li:before {
             content: '✓';
             position: absolute;
             left: 0;
             color: var(--gold);
             font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .menu-card-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(243, 231, 198, 0.1);
+        }
+        
+        .menu-tag {
+            background: rgba(76, 175, 80, 0.1);
+            color: var(--success-green);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .menu-tag.spicy {
+            background: rgba(255, 82, 82, 0.1);
+            color: var(--spicy-red);
+        }
+        
+        .menu-tag.house-special {
+            background: rgba(224, 193, 90, 0.1);
+            color: var(--gold);
+        }
+        
+        .menu-tag.popular {
+            background: rgba(245, 160, 69, 0.1);
+            color: var(--fire-orange);
+        }
+        
+        /* ===== KOTA SPECIAL STYLES ===== */
+        .kota-special {
+            background: rgba(224, 193, 90, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid rgba(224, 193, 90, 0.2);
+        }
+        
+        .kota-base {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(224, 193, 90, 0.2);
+        }
+        
+        .kota-base h4 {
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin: 0;
+        }
+        
+        .kota-base-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+        
+        .kota-description {
+            color: rgba(243, 231, 198, 0.9);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .additions-section {
+            margin-top: 20px;
+        }
+        
+        .additions-title {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .additions-title i {
+            color: var(--fire-orange);
+        }
+        
+        .additions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .addition-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .addition-item:hover {
+            background: rgba(224, 193, 90, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .addition-name {
+            color: var(--warm-light);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        
+        .addition-price {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== PLATTERS STYLES ===== */
+        .platters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .platter-card {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(224, 193, 90, 0.1);
+            transition: all 0.5s ease;
+            text-align: center;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .platter-card:hover {
+            border-color: rgba(224, 193, 90, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px);
+        }
+        
+        .platter-card.popular:before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            padding: 8px 35px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .platter-name {
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        
+        .platter-serves {
+            font-size: 0.95rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .platter-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 25px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .platter-items {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        .platter-items li {
+            padding: 12px 0;
+            color: rgba(243, 231, 198, 0.9);
+            font-size: 1rem;
+            position: relative;
+            padding-left: 30px;
+            border-bottom: 1px solid rgba(243, 231, 198, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        
+        .platter-items li:last-child {
+            border-bottom: none;
+        }
+        
+        .platter-items li:before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .platter-tag {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+        
+        /* ===== PRICE COMPARISON ===== */
+        .price-comparison {
+            background: rgba(26, 26, 26, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .price-option {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+        
+        .price-option:hover {
+            background: rgba(224, 193, 90, 0.1);
+        }
+        
+        .price-size {
+            font-size: 1.1rem;
+            color: var(--warm-light);
+            margin-bottom: 5px;
+        }
+        
+        .price-amount {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+        
+        .price-value {
+            font-size: 0.85rem;
+            color: rgba(243, 231, 198, 0.7);
+            margin-top: 5px;
+        }
+        
+        /* ===== MENU DIVIDER ===== */
+        .menu-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(224, 193, 90, 0.5), transparent);
+            margin: 60px 0;
         }
         
         /* ===== EVENT PACKAGES SECTION ===== */
@@ -1116,11 +1418,15 @@
                 font-size: 2.5rem;
             }
             
-            .menu-items, .food-items {
+            .menu-grid, .menu-cards {
                 grid-template-columns: repeat(2, 1fr);
             }
             
             .platters-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .additions-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
@@ -1133,6 +1439,16 @@
                 max-width: 100%;
                 height: auto;
                 min-height: 600px;
+            }
+            
+            .bar-category-header, .category-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .bar-category-tagline, .category-tagline {
+                text-align: left;
             }
         }
         
@@ -1200,7 +1516,7 @@
                 font-size: 0.9rem;
             }
             
-            .menu-items, .food-items {
+            .menu-grid, .menu-cards, .additions-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -1240,7 +1556,7 @@
                 font-size: 0.85rem;
             }
             
-            .menu-item, .food-item, .platter-item {
+            .bar-menu-item, .menu-card, .platter-card, .kota-special {
                 padding: 20px;
             }
             
@@ -1256,6 +1572,15 @@
                 width: 100%;
                 max-width: 100%;
                 padding: 100px 20px 30px;
+            }
+            
+            .price-comparison {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .price-option {
+                min-width: 100%;
             }
         }
     </style>
@@ -1319,280 +1644,548 @@
                 </div>
                 
                 <div class="bar-category fade-in-left">
-                    <h3>Soft Drinks & Mixers</h3>
-                    <div class="menu-items">
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="menu-item-name">
-                                <h4>Lemonade</h4>
-                                <span class="menu-item-price">R22</span>
+                    <div class="bar-category-header">
+                        <h3><i class="fas fa-glass-martini-alt"></i> Soft Drinks & Mixers</h3>
+                        <div class="bar-category-tagline">Perfect mixers for your spirits</div>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Lemonade</h4>
+                                    <div class="bar-item-origin">Refreshing</div>
+                                </div>
+                                <div class="bar-item-price">R22</div>
+                            </div>
+                            <p class="bar-item-description">Freshly squeezed lemonade with a hint of mint</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-leaf"></i> Refreshing</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="menu-item-name">
-                                <h4>Tonic</h4>
-                                <span class="menu-item-price">R22</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Tonic Water</h4>
+                                    <div class="bar-item-origin">Premium Mixer</div>
+                                </div>
+                                <div class="bar-item-price">R22</div>
+                            </div>
+                            <p class="bar-item-description">Classic tonic water with quinine, perfect for gin</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-cocktail"></i> Gin Pairing</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="menu-item-name">
-                                <h4>Sparkling Water</h4>
-                                <span class="menu-item-price">R20</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Sparkling Water</h4>
+                                    <div class="bar-item-origin">Natural</div>
+                                </div>
+                                <div class="bar-item-price">R20</div>
+                            </div>
+                            <p class="bar-item-description">Naturally carbonated mineral water</p>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.4s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Coca-Cola</h4>
+                                    <div class="bar-item-origin">Classic</div>
+                                </div>
+                                <div class="bar-item-price">R15</div>
+                            </div>
+                            <p class="bar-item-description">The classic cola experience</p>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.5s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Red Bull Energy</h4>
+                                    <div class="bar-item-origin">Energy Boost</div>
+                                </div>
+                                <div class="bar-item-price">R22</div>
+                            </div>
+                            <p class="bar-item-description">Popular energy drink for cocktails and mixers</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-bolt"></i> Energizing</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.4s;">
-                            <div class="menu-item-name">
-                                <h4>Coke</h4>
-                                <span class="menu-item-price">R15</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.6s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Still Water</h4>
+                                    <div class="bar-item-origin">Purified</div>
+                                </div>
+                                <div class="bar-item-price">R20</div>
                             </div>
+                            <p class="bar-item-description">Pure filtered still water</p>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.5s;">
-                            <div class="menu-item-name">
-                                <h4>Redbull</h4>
-                                <span class="menu-item-price">R22</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.7s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Cranberry Juice</h4>
+                                    <div class="bar-item-origin">100% Juice</div>
+                                </div>
+                                <div class="bar-item-price">R25</div>
                             </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.6s;">
-                            <div class="menu-item-name">
-                                <h4>Still Water</h4>
-                                <span class="menu-item-price">R20</span>
-                            </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.7s;">
-                            <div class="menu-item-name">
-                                <h4>Cranberry</h4>
-                                <span class="menu-item-price">R25</span>
+                            <p class="bar-item-description">Tart cranberry juice, perfect for vodka cocktails</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-wine-glass-alt"></i> Cocktail Base</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="bar-category fade-in-right">
-                    <h3>Ciders & Coolers</h3>
-                    <div class="menu-items">
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="menu-item-name">
-                                <h4>Savanna Dry</h4>
-                                <span class="menu-item-price">R25</span>
+                    <div class="bar-category-header">
+                        <h3><i class="fas fa-beer"></i> Ciders & Coolers</h3>
+                        <div class="bar-category-tagline">Refreshing alcoholic beverages</div>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Savanna Dry</h4>
+                                    <div class="bar-item-origin">Premium Cider</div>
+                                </div>
+                                <div class="bar-item-price">R25</div>
+                            </div>
+                            <p class="bar-item-description">South Africa's favorite premium dry cider</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-star"></i> Best Seller</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="menu-item-name">
-                                <h4>Belgravia Gin & Tonic</h4>
-                                <span class="menu-item-price">R20</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Belgravia Gin & Tonic</h4>
+                                    <div class="bar-item-origin">Ready-to-drink</div>
+                                </div>
+                                <div class="bar-item-price">R20</div>
+                            </div>
+                            <p class="bar-item-description">Pre-mixed gin and tonic in a can</p>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Belgravia Gin & Dry Lemon</h4>
+                                    <div class="bar-item-origin">Ready-to-drink</div>
+                                </div>
+                                <div class="bar-item-price">R20</div>
+                            </div>
+                            <p class="bar-item-description">Gin with dry lemon mixer</p>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.4s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Brutal Fruit Ruby</h4>
+                                    <div class="bar-item-origin">Fruit Cooler</div>
+                                </div>
+                                <div class="bar-item-price">R20</div>
+                            </div>
+                            <p class="bar-item-description">Ruby grapefruit flavored fruit cooler</p>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.5s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Black Crown</h4>
+                                    <div class="bar-item-origin">Premium Cooler</div>
+                                </div>
+                                <div class="bar-item-price">R20</div>
+                            </div>
+                            <p class="bar-item-description">Premium alcoholic soda with natural flavors</p>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.6s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Ice Tropez</h4>
+                                    <div class="bar-item-origin">Vodka Cooler</div>
+                                </div>
+                                <div class="bar-item-price">R90</div>
+                            </div>
+                            <p class="bar-item-description">Premium vodka-based cooler with natural fruit flavors</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-crown"></i> Premium</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="menu-item-name">
-                                <h4>Belgravia Gin & Dry Lemon</h4>
-                                <span class="menu-item-price">R20</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.7s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Bernini</h4>
+                                    <div class="bar-item-origin">Sparkling Wine Cooler</div>
+                                </div>
+                                <div class="bar-item-price">R20</div>
                             </div>
+                            <p class="bar-item-description">Sparkling wine based fruit cooler</p>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.4s;">
-                            <div class="menu-item-name">
-                                <h4>Brutal Fruit Ruby</h4>
-                                <span class="menu-item-price">R20</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.8s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Hunters Extreme</h4>
+                                    <div class="bar-item-origin">Cider</div>
+                                </div>
+                                <div class="bar-item-price">R23</div>
                             </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.5s;">
-                            <div class="menu-item-name">
-                                <h4>Black Crown</h4>
-                                <span class="menu-item-price">R20</span>
-                            </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.6s;">
-                            <div class="menu-item-name">
-                                <h4>Ice Tropez</h4>
-                                <span class="menu-item-price">R90</span>
-                            </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.7s;">
-                            <div class="menu-item-name">
-                                <h4>Bernini</h4>
-                                <span class="menu-item-price">R20</span>
-                            </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.8s;">
-                            <div class="menu-item-name">
-                                <h4>Hunters Extreme</h4>
-                                <span class="menu-item-price">R23</span>
-                            </div>
+                            <p class="bar-item-description">Crisp and refreshing cider with a hint of fruit</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="bar-category fade-in-left">
-                    <h3>Beers</h3>
-                    <div class="menu-items">
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="menu-item-name">
-                                <h4>Heineken</h4>
-                                <span class="menu-item-price">R21</span>
+                    <div class="bar-category-header">
+                        <h3><i class="fas fa-beer"></i> Beers</h3>
+                        <div class="bar-category-tagline">Local and international selections</div>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Heineken</h4>
+                                    <div class="bar-item-origin">Netherlands</div>
+                                </div>
+                                <div class="bar-item-price">R21</div>
+                            </div>
+                            <p class="bar-item-description">World-famous premium lager with distinctive taste</p>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Stella Artois</h4>
+                                    <div class="bar-item-origin">Belgium</div>
+                                </div>
+                                <div class="bar-item-price">R21</div>
+                            </div>
+                            <p class="bar-item-description">Classic Belgian pilsner with crisp finish</p>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Corona Extra</h4>
+                                    <div class="bar-item-origin">Mexico</div>
+                                </div>
+                                <div class="bar-item-price">R21</div>
+                            </div>
+                            <p class="bar-item-description">Light Mexican lager, best served with lime</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-sun"></i> Summer Favorite</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="menu-item-name">
-                                <h4>Stella Artois</h4>
-                                <span class="menu-item-price">R21</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.4s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Black Label</h4>
+                                    <div class="bar-item-origin">South Africa</div>
+                                </div>
+                                <div class="bar-item-price">R20</div>
+                            </div>
+                            <p class="bar-item-description">South Africa's iconic beer since 1895</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-flag"></i> Local Favorite</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="menu-item-name">
-                                <h4>Corona</h4>
-                                <span class="menu-item-price">R21</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.5s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Flying Fish</h4>
+                                    <div class="bar-item-origin">South Africa</div>
+                                </div>
+                                <div class="bar-item-price">R21</div>
                             </div>
+                            <p class="bar-item-description">Refreshing flavored beer with lemon twist</p>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.4s;">
-                            <div class="menu-item-name">
-                                <h4>Black Label</h4>
-                                <span class="menu-item-price">R20</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.6s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Castle Lite</h4>
+                                    <div class="bar-item-origin">South Africa</div>
+                                </div>
+                                <div class="bar-item-price">R20</div>
                             </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.5s;">
-                            <div class="menu-item-name">
-                                <h4>Flying Fish</h4>
-                                <span class="menu-item-price">R21</span>
-                            </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.6s;">
-                            <div class="menu-item-name">
-                                <h4>Castle Lite</h4>
-                                <span class="menu-item-price">R20</span>
+                            <p class="bar-item-description">Light beer with fewer calories, same great taste</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-weight"></i> Low Calorie</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="bar-category fade-in-right">
-                    <h3>Champagnes</h3>
-                    <div class="menu-items">
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="menu-item-name">
-                                <h4>Moet Nectar Imperial</h4>
-                                <span class="menu-item-price">R1,950</span>
+                    <div class="bar-category-header">
+                        <h3><i class="fas fa-wine-glass-alt"></i> Champagnes & Sparkling</h3>
+                        <div class="bar-category-tagline">Celebrate in style</div>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Moët Nectar Imperial</h4>
+                                    <div class="bar-item-origin">Champagne, France</div>
+                                </div>
+                                <div class="bar-item-price">R1,950</div>
+                            </div>
+                            <p class="bar-item-description">Rich and opulent demi-sec champagne with fruity notes</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-gem"></i> Luxury</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="menu-item-name">
-                                <h4>Veuve Rich</h4>
-                                <span class="menu-item-price">R2,100</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Veuve Rich</h4>
+                                    <div class="bar-item-origin">Champagne, France</div>
+                                </div>
+                                <div class="bar-item-price">R2,100</div>
+                            </div>
+                            <p class="bar-item-description">Rich champagne blend with vibrant fruitiness</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-sparkles"></i> Celebration</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="menu-item-name">
-                                <h4>Krone Night Nectar</h4>
-                                <span class="menu-item-price">R650</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Krone Night Nectar</h4>
+                                    <div class="bar-item-origin">South Africa</div>
+                                </div>
+                                <div class="bar-item-price">R650</div>
+                            </div>
+                            <p class="bar-item-description">South African Méthode Cap Classique with sweet finish</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-moon"></i> Night Special</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="bar-category fade-in-left">
-                    <h3>Cognacs</h3>
-                    <div class="menu-items">
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="menu-item-name">
-                                <h4>Hennessy VS</h4>
-                                <span class="menu-item-price">R1,400</span>
+                    <div class="bar-category-header">
+                        <h3><i class="fas fa-crown"></i> Cognacs</h3>
+                        <div class="bar-category-tagline">Premium French cognacs</div>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Hennessy VS</h4>
+                                    <div class="bar-item-origin">Cognac, France</div>
+                                </div>
+                                <div class="bar-item-price">R1,400</div>
+                            </div>
+                            <p class="bar-item-description">Very Special cognac with vibrant and robust character</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-award"></i> Entry Level</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="menu-item-name">
-                                <h4>Hennessy VSOP</h4>
-                                <span class="menu-item-price">R2,000</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Hennessy VSOP</h4>
+                                    <div class="bar-item-origin">Cognac, France</div>
+                                </div>
+                                <div class="bar-item-price">R2,000</div>
+                            </div>
+                            <p class="bar-item-description">Very Superior Old Pale - smooth and well-balanced</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-star"></i> Popular Choice</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="menu-item-name">
-                                <h4>Hennessy XO</h4>
-                                <span class="menu-item-price">R6,500</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Hennessy XO</h4>
+                                    <div class="bar-item-origin">Cognac, France</div>
+                                </div>
+                                <div class="bar-item-price">R6,500</div>
+                            </div>
+                            <p class="bar-item-description">Extra Old cognac with exceptional depth and complexity</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-gem"></i> Ultra Premium</span>
                             </div>
                         </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.4s;">
-                            <div class="menu-item-name">
-                                <h4>Remy Martin VSOP</h4>
-                                <span class="menu-item-price">R1,600</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.4s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Rémy Martin VSOP</h4>
+                                    <div class="bar-item-origin">Cognac, France</div>
+                                </div>
+                                <div class="bar-item-price">R1,600</div>
+                            </div>
+                            <p class="bar-item-description">Fine Champagne cognac with fruity and floral notes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bar-category fade-in-right">
+                    <div class="bar-category-header">
+                        <h3><i class="fas fa-fire"></i> Tequila & Liqueurs</h3>
+                        <div class="bar-category-tagline">Spirits with character</div>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Don Julio Reposado</h4>
+                                    <div class="bar-item-origin">Tequila, Mexico</div>
+                                </div>
+                                <div class="bar-item-price">R1,800</div>
+                            </div>
+                            <p class="bar-item-description">Aged 8 months in American white oak barrels</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-ribbon"></i> Premium Tequila</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Olmeca Gold / Silver</h4>
+                                    <div class="bar-item-origin">Tequila, Mexico</div>
+                                </div>
+                                <div class="bar-item-price">R650</div>
+                            </div>
+                            <p class="bar-item-description">Smooth tequila perfect for shots or cocktails</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-cocktail"></i> Mixer Friendly</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Jägermeister</h4>
+                                    <div class="bar-item-origin">Germany</div>
+                                </div>
+                                <div class="bar-item-price">R750<span class="per-item">Bottle</span></div>
+                            </div>
+                            <p class="bar-item-description">Herbal digestif with 56 herbs and spices</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-seedling"></i> Herbal</span>
+                                <span class="feature-tag"><i class="fas fa-snowflake"></i> Chilled Shots</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.4s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Jägermeister Shot</h4>
+                                    <div class="bar-item-origin">Germany</div>
+                                </div>
+                                <div class="bar-item-price">R30<span class="per-item">Per Shot</span></div>
+                            </div>
+                            <p class="bar-item-description">Best served ice cold as a shot</p>
+                        </div>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.5s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Olmeca Shot</h4>
+                                    <div class="bar-item-origin">Mexico</div>
+                                </div>
+                                <div class="bar-item-price">R25<span class="per-item">Per Shot</span></div>
+                            </div>
+                            <p class="bar-item-description">Tequila shot with salt and lime</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bar-category fade-in-left">
+                    <div class="bar-category-header">
+                        <h3><i class="fas fa-wine-bottle"></i> Gin</h3>
+                        <div class="bar-category-tagline">Premium London dry gin</div>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Tanqueray London Dry</h4>
+                                    <div class="bar-item-origin">England</div>
+                                </div>
+                                <div class="bar-item-price">R700</div>
+                            </div>
+                            <p class="bar-item-description">Classic London dry gin with crisp juniper notes</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-cocktail"></i> Perfect for G&T</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="bar-category fade-in-right">
-                    <h3>Tequila & Liquers</h3>
-                    <div class="menu-items">
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="menu-item-name">
-                                <h4>Don Julio Reposado</h4>
-                                <span class="menu-item-price">R1,800</span>
+                    <div class="bar-category-header">
+                        <h3><i class="fas fa-wine-glass"></i> Wines</h3>
+                        <div class="bar-category-tagline">By the glass</div>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Chateau Red / White</h4>
+                                    <div class="bar-item-origin">South Africa</div>
+                                </div>
+                                <div class="bar-item-price">R22<span class="per-item">Per Glass</span></div>
                             </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="menu-item-name">
-                                <h4>Olmeca Gold / Silver</h4>
-                                <span class="menu-item-price">R650</span>
-                            </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="menu-item-name">
-                                <h4>Jagermeister</h4>
-                                <span class="menu-item-price">R750</span>
-                            </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.4s;">
-                            <div class="menu-item-name">
-                                <h4>Jagermeister (Shot)</h4>
-                                <span class="menu-item-price">R30</span>
-                            </div>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.5s;">
-                            <div class="menu-item-name">
-                                <h4>Olmeca Gold / Silver (Shot)</h4>
-                                <span class="menu-item-price">R25</span>
+                            <p class="bar-item-description">House selection red or white wine</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-home"></i> House Wine</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="bar-category fade-in-left">
-                    <h3>Gin</h3>
-                    <div class="menu-items">
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="menu-item-name">
-                                <h4>Tanqueray</h4>
-                                <span class="menu-item-price">R700</span>
-                            </div>
-                        </div>
+                    <div class="bar-category-header">
+                        <h3><i class="fas fa-smoking"></i> Hubbly (Hookah)</h3>
+                        <div class="bar-category-tagline">Social smoking experience</div>
                     </div>
-                </div>
-                
-                <div class="bar-category fade-in-right">
-                    <h3>Wines</h3>
-                    <div class="menu-items">
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="menu-item-name">
-                                <h4>Chateau Red / White</h4>
-                                <span class="menu-item-price">R22</span>
+                    <div class="menu-grid">
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Full Hubbly Setup</h4>
+                                    <div class="bar-item-origin">Premium Service</div>
+                                </div>
+                                <div class="bar-item-price">R200</div>
                             </div>
-                            <p class="menu-item-description">Per glass</p>
+                            <p class="bar-item-description">Complete hookah setup with your choice of premium flavors. Includes coals, bowl, hose, and base.</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-star"></i> Most Popular</span>
+                                <span class="feature-tag"><i class="fas fa-users"></i> Social</span>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="bar-category fade-in-left">
-                    <h3>Hubbly</h3>
-                    <div class="menu-items">
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="menu-item-name">
-                                <h4>Hubbly</h4>
-                                <span class="menu-item-price">R200</span>
+                        
+                        <div class="bar-menu-item fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="bar-item-header">
+                                <div class="bar-item-name">
+                                    <h4>Flavor Refill</h4>
+                                    <div class="bar-item-origin">Additional Service</div>
+                                </div>
+                                <div class="bar-item-price">R100</div>
                             </div>
-                            <p class="menu-item-description">Full setup with flavors</p>
-                        </div>
-                        <div class="menu-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="menu-item-name">
-                                <h4>Refill</h4>
-                                <span class="menu-item-price">R100</span>
+                            <p class="bar-item-description">Refill your existing hookah with fresh flavors</p>
+                            <div class="bar-item-features">
+                                <span class="feature-tag"><i class="fas fa-redo"></i> Refill Only</span>
                             </div>
-                            <p class="menu-item-description">Flavor refill only</p>
                         </div>
                     </div>
                 </div>
@@ -1602,110 +2195,188 @@
             <div class="menu-section" id="restaurant-menu">
                 <div class="section-title fade-in-up">
                     <h2>Restaurant Menu</h2>
-                    <p class="title-subtext">Authentic South African cuisine</p>
+                    <p class="title-subtext">Authentic South African street food & traditional cuisine</p>
                 </div>
                 
                 <div class="restaurant-category fade-in-left">
-                    <h3>Traditionals</h3>
-                    <div class="food-items">
-                        <div class="food-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="food-item-name">
-                                <h4>Mogodu with sides</h4>
-                                <span class="food-item-price">R75</span>
+                    <div class="category-header">
+                        <h3><i class="fas fa-utensils"></i> Traditionals</h3>
+                        <div class="category-tagline">Hearty, home-style dishes</div>
+                    </div>
+                    <div class="menu-cards">
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Mogodu with Sides</h4>
+                                </div>
+                                <div class="menu-card-price">R75</div>
                             </div>
-                            <p class="food-item-description">Traditional tripe stew served with your choice of sides</p>
+                            <p class="menu-card-description">Traditional tripe stew slow-cooked with onions, garlic, and spices until tender and flavorful.</p>
+                            <ul class="menu-card-highlights">
+                                <li>Served with your choice of 2 sides</li>
+                                <li>Perfect with pap or steamed bread</li>
+                                <li>Authentic South African preparation</li>
+                            </ul>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag house-special"><i class="fas fa-star"></i> House Special</span>
+                                <span class="menu-tag"><i class="fas fa-clock"></i> Slow Cooked</span>
+                            </div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="food-item-name">
-                                <h4>Marapo with sides</h4>
-                                <span class="food-item-price">R60</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Marapo with Sides</h4>
+                                </div>
+                                <div class="menu-card-price">R60</div>
                             </div>
-                            <p class="food-item-description">Bone marrow served with delicious sides</p>
+                            <p class="menu-card-description">Succulent bone marrow served with delicious sides. Rich, buttery, and packed with flavor.</p>
+                            <ul class="menu-card-highlights">
+                                <li>Rich in flavor and nutrients</li>
+                                <li>Perfectly seasoned and roasted</li>
+                                <li>Comes with 2 sides of your choice</li>
+                            </ul>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag"><i class="fas fa-drumstick-bite"></i> Bone-in</span>
+                            </div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="food-item-name">
-                                <h4>Trotters with side</h4>
-                                <span class="food-item-price">R50</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Trotters with Side</h4>
+                                </div>
+                                <div class="menu-card-price">R50</div>
                             </div>
-                            <p class="food-item-description">Slow-cooked trotters with your choice of side</p>
+                            <p class="menu-card-description">Slow-cooked pork trotters, tender and falling off the bone, served with your choice of side.</p>
+                            <ul class="menu-card-highlights">
+                                <li>Slow cooked to perfection</li>
+                                <li>Tender and flavorful</li>
+                                <li>One side included</li>
+                            </ul>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag"><i class="fas fa-clock"></i> Slow Cooked</span>
+                            </div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.4s;">
-                            <div class="food-item-name">
-                                <h4>Organic Chicken</h4>
-                                <span class="food-item-price">R70</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.4s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Organic Chicken</h4>
+                                </div>
+                                <div class="menu-card-price">R70</div>
                             </div>
-                            <p class="food-item-description">Free-range chicken prepared traditionally</p>
+                            <p class="menu-card-description">Free-range organic chicken prepared traditionally with authentic spices and herbs.</p>
+                            <ul class="menu-card-highlights">
+                                <li>Free-range organic chicken</li>
+                                <li>Traditional preparation</li>
+                                <li>Two sides included</li>
+                            </ul>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag"><i class="fas fa-leaf"></i> Organic</span>
+                            </div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.5s;">
-                            <div class="food-item-name">
-                                <h4>Beef Stew</h4>
-                                <span class="food-item-price">R80</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.5s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Beef Stew</h4>
+                                </div>
+                                <div class="menu-card-price">R80</div>
                             </div>
-                            <p class="food-item-description">Hearty beef stew with vegetables</p>
+                            <p class="menu-card-description">Hearty beef stew with tender chunks of beef, carrots, potatoes, and traditional spices.</p>
+                            <ul class="menu-card-highlights">
+                                <li>Slow-cooked for maximum flavor</li>
+                                <li>Loaded with vegetables</li>
+                                <li>Comfort food at its best</li>
+                            </ul>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag popular"><i class="fas fa-fire"></i> Popular</span>
+                            </div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.6s;">
-                            <div class="food-item-name">
-                                <h4>Sunday Kos</h4>
-                                <span class="food-item-price">R90</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.6s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Sunday Kos</h4>
+                                </div>
+                                <div class="menu-card-price">R90</div>
                             </div>
-                            <p class="food-item-description">Traditional Sunday family meal with all the trimmings</p>
+                            <p class="menu-card-description">Traditional Sunday family meal with all the trimmings - meat, vegetables, and starch.</p>
+                            <ul class="menu-card-highlights">
+                                <li>Complete Sunday meal</li>
+                                <li>Family-style serving</li>
+                                <li>All traditional trimmings included</li>
+                            </ul>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag"><i class="fas fa-calendar-day"></i> Sunday Special</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="restaurant-category fade-in-right">
-                    <h3>Sides</h3>
-                    <div class="food-items">
-                        <div class="food-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="food-item-name">
-                                <h4>Gravy</h4>
-                                <span class="food-item-price">R20</span>
-                            </div>
+                    <div class="category-header">
+                        <h3><i class="fas fa-carrot"></i> Side Dishes</h3>
+                        <div class="category-tagline">Perfect accompaniments</div>
+                    </div>
+                    <div class="price-comparison">
+                        <div class="price-option">
+                            <div class="price-size">Gravy</div>
+                            <div class="price-amount">R20</div>
+                            <div class="price-value">Rich meat gravy</div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="food-item-name">
-                                <h4>Veg of the Day</h4>
-                                <span class="food-item-price">R15</span>
-                            </div>
+                        <div class="price-option">
+                            <div class="price-size">Veg of the Day</div>
+                            <div class="price-amount">R15</div>
+                            <div class="price-value">Fresh daily selection</div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="food-item-name">
-                                <h4>Chakalaka</h4>
-                                <span class="food-item-price">R20</span>
-                            </div>
+                        <div class="price-option">
+                            <div class="price-size">Chakalaka</div>
+                            <div class="price-amount">R20</div>
+                            <div class="price-value">Spicy vegetable relish</div>
                         </div>
                     </div>
                 </div>
                 
+                <div class="menu-divider"></div>
+                
                 <div class="restaurant-category fade-in-left">
-                    <h3>Kota / Spahtlho</h3>
-                    <div class="food-items">
-                        <div class="food-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="food-item-name">
-                                <h4>Basic Kota</h4>
-                                <span class="food-item-price">R30</span>
+                    <div class="category-header">
+                        <h3><i class="fas fa-burger"></i> Kota / Spahtlho</h3>
+                        <div class="category-tagline">South African street food classic</div>
+                    </div>
+                    
+                    <div class="kota-special fade-in-up">
+                        <div class="kota-base">
+                            <h4>Basic Kota</h4>
+                            <div class="kota-base-price">R30</div>
+                        </div>
+                        <p class="kota-description">Toasted bread filled with caramelised onion, fresh lettuce, ripe tomatoes, and melted cheese. The perfect foundation for your custom kota creation.</p>
+                        
+                        <div class="additions-section">
+                            <div class="additions-title">
+                                <i class="fas fa-plus-circle"></i> Build Your Own - Additions
                             </div>
-                            <p class="food-item-description">Toasted bread, caramelised onion, lettuce, tomato and cheese</p>
-                            <div class="food-item-additions">
-                                <div class="additions-title">Additions:</div>
-                                <div class="addition-item">
+                            <div class="additions-grid">
+                                <div class="addition-item fade-in-up" style="animation-delay: 0.1s;">
                                     <span class="addition-name">Egg</span>
                                     <span class="addition-price">R5</span>
                                 </div>
-                                <div class="addition-item">
-                                    <span class="addition-name">Russian</span>
+                                <div class="addition-item fade-in-up" style="animation-delay: 0.2s;">
+                                    <span class="addition-name">Russian Sausage</span>
                                     <span class="addition-price">R20</span>
                                 </div>
-                                <div class="addition-item">
+                                <div class="addition-item fade-in-up" style="animation-delay: 0.3s;">
                                     <span class="addition-name">Beef Patty</span>
                                     <span class="addition-price">R25</span>
                                 </div>
-                                <div class="addition-item">
+                                <div class="addition-item fade-in-up" style="animation-delay: 0.4s;">
                                     <span class="addition-name">Chicken Breast</span>
                                     <span class="addition-price">R20</span>
                                 </div>
-                                <div class="addition-item">
-                                    <span class="addition-name">Vienna</span>
+                                <div class="addition-item fade-in-up" style="animation-delay: 0.5s;">
+                                    <span class="addition-name">Vienna Sausage</span>
                                     <span class="addition-price">R15</span>
                                 </div>
                             </div>
@@ -1714,151 +2385,243 @@
                 </div>
                 
                 <div class="restaurant-category fade-in-right">
-                    <h3>Chips</h3>
-                    <div class="food-items">
-                        <div class="food-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="food-item-name">
-                                <h4>Small</h4>
-                                <span class="food-item-price">R25</span>
-                            </div>
+                    <div class="category-header">
+                        <h3><i class="fas fa-french-fries"></i> Chips (French Fries)</h3>
+                        <div class="category-tagline">Crispy golden fries</div>
+                    </div>
+                    <div class="price-comparison">
+                        <div class="price-option">
+                            <div class="price-size">Small</div>
+                            <div class="price-amount">R25</div>
+                            <div class="price-value">Perfect snack size</div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="food-item-name">
-                                <h4>Medium</h4>
-                                <span class="food-item-price">R35</span>
-                            </div>
+                        <div class="price-option">
+                            <div class="price-size">Medium</div>
+                            <div class="price-amount">R35</div>
+                            <div class="price-value">Great for sharing</div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="food-item-name">
-                                <h4>Large</h4>
-                                <span class="food-item-price">R50</span>
-                            </div>
+                        <div class="price-option">
+                            <div class="price-size">Large</div>
+                            <div class="price-amount">R50</div>
+                            <div class="price-value">Feeds 2-3 people</div>
                         </div>
                     </div>
                 </div>
                 
+                <div class="menu-divider"></div>
+                
                 <div class="restaurant-category fade-in-left">
-                    <h3>Grills & Fries</h3>
-                    <div class="food-items">
-                        <div class="food-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="food-item-name">
-                                <h4>4 Wings + Chips</h4>
-                                <span class="food-item-price">R55</span>
+                    <div class="category-header">
+                        <h3><i class="fas fa-drumstick-bite"></i> Grills & Fries</h3>
+                        <div class="category-tagline">Perfect bar snacks</div>
+                    </div>
+                    <div class="menu-cards">
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>4 Wings + Chips</h4>
+                                </div>
+                                <div class="menu-card-price">R55</div>
+                            </div>
+                            <p class="menu-card-description">Four juicy chicken wings served with a generous portion of golden fries.</p>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag spicy"><i class="fas fa-pepper-hot"></i> Choose Your Heat Level</span>
                             </div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="food-item-name">
-                                <h4>6 Wings + Chips</h4>
-                                <span class="food-item-price">R75</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>6 Wings + Chips</h4>
+                                </div>
+                                <div class="menu-card-price">R75</div>
+                            </div>
+                            <p class="menu-card-description">Six chicken wings with fries - perfect for sharing or a hearty meal.</p>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag popular"><i class="fas fa-fire"></i> Most Popular</span>
+                                <span class="menu-tag spicy"><i class="fas fa-pepper-hot"></i> Choose Your Heat Level</span>
                             </div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="food-item-name">
-                                <h4>8 Wings + Chips</h4>
-                                <span class="food-item-price">R110</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>8 Wings + Chips</h4>
+                                </div>
+                                <div class="menu-card-price">R110</div>
+                            </div>
+                            <p class="menu-card-description">Eight wings with fries - a feast for one or perfect for two to share.</p>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag spicy"><i class="fas fa-pepper-hot"></i> Choose Your Heat Level</span>
                             </div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.4s;">
-                            <div class="food-item-name">
-                                <h4>12 Wings + Chips</h4>
-                                <span class="food-item-price">R140</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.4s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>12 Wings + Chips</h4>
+                                </div>
+                                <div class="menu-card-price">R140</div>
+                            </div>
+                            <p class="menu-card-description">A dozen wings with fries - ideal for groups or serious wing lovers.</p>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag"><i class="fas fa-users"></i> Great for Sharing</span>
+                                <span class="menu-tag spicy"><i class="fas fa-pepper-hot"></i> Choose Your Heat Level</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="restaurant-category fade-in-right">
-                    <h3>Chicken</h3>
-                    <div class="food-items">
-                        <div class="food-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="food-item-name">
-                                <h4>Grilled 1/4 Chicken</h4>
-                                <span class="food-item-price">R70</span>
+                    <div class="category-header">
+                        <h3><i class="fas fa-drumstick"></i> Grilled Chicken</h3>
+                        <div class="category-tagline">Flame-grilled perfection</div>
+                    </div>
+                    <div class="menu-cards">
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Grilled ¼ Chicken</h4>
+                                </div>
+                                <div class="menu-card-price">R70</div>
+                            </div>
+                            <p class="menu-card-description">Quarter chicken, marinated and flame-grilled to juicy perfection.</p>
+                        </div>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Grilled ½ Chicken</h4>
+                                </div>
+                                <div class="menu-card-price">R100</div>
+                            </div>
+                            <p class="menu-card-description">Half chicken, perfect for sharing or a substantial meal.</p>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag popular"><i class="fas fa-fire"></i> Best Value</span>
                             </div>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="food-item-name">
-                                <h4>Grilled 1/2 Chicken</h4>
-                                <span class="food-item-price">R100</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Grilled Full Chicken</h4>
+                                </div>
+                                <div class="menu-card-price">R150</div>
                             </div>
-                        </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="food-item-name">
-                                <h4>Grilled Full Chicken</h4>
-                                <span class="food-item-price">R150</span>
+                            <p class="menu-card-description">Whole chicken, ideal for families or groups of 3-4 people.</p>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag"><i class="fas fa-users"></i> Family Meal</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
+                <div class="menu-divider"></div>
+                
                 <div class="restaurant-category fade-in-left">
-                    <h3>Platters</h3>
+                    <div class="category-header">
+                        <h3><i class="fas fa-utensil-spoon"></i> Sharing Platters</h3>
+                        <div class="category-tagline">Perfect for groups</div>
+                    </div>
                     <div class="platters-grid">
-                        <div class="platter-item fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="platter-card fade-in-up" style="animation-delay: 0.1s;">
                             <h4 class="platter-name">Nix Mapha</h4>
-                            <div class="platter-serves">Serves 1</div>
+                            <div class="platter-serves"><i class="fas fa-user"></i> Serves 1</div>
                             <div class="platter-price">R100</div>
                             <ul class="platter-items">
-                                <li>2x Wings</li>
-                                <li>2x Kebab</li>
+                                <li>2x Chicken Wings</li>
+                                <li>2x Beef Kebabs</li>
                                 <li>Chicken Strips</li>
+                                <li>Side of Chips</li>
                             </ul>
+                            <div class="platter-tag">Perfect Solo Feast</div>
                         </div>
                         
-                        <div class="platter-item fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="platter-card fade-in-up popular" style="animation-delay: 0.2s;">
                             <h4 class="platter-name">Mngan Wam</h4>
-                            <div class="platter-serves">Serves 2</div>
+                            <div class="platter-serves"><i class="fas fa-user-friends"></i> Serves 2</div>
                             <div class="platter-price">R250</div>
                             <ul class="platter-items">
-                                <li>6x Wings</li>
-                                <li>4x Kebab</li>
+                                <li>6x Chicken Wings</li>
+                                <li>4x Beef Kebabs</li>
                                 <li>4x Chicken Strips</li>
+                                <li>Large Chips</li>
+                                <li>2x Dips of Choice</li>
                             </ul>
+                            <div class="platter-tag">Most Popular</div>
                         </div>
                         
-                        <div class="platter-item fade-in-up" style="animation-delay: 0.3s;">
+                        <div class="platter-card fade-in-up" style="animation-delay: 0.3s;">
                             <h4 class="platter-name">Zonke Bonke</h4>
-                            <div class="platter-serves">Serves 4</div>
+                            <div class="platter-serves"><i class="fas fa-users"></i> Serves 4</div>
                             <div class="platter-price">R750</div>
                             <ul class="platter-items">
-                                <li>6x Wings</li>
-                                <li>6x Kebab</li>
-                                <li>6x Chicken Strips</li>
+                                <li>12x Chicken Wings</li>
+                                <li>8x Beef Kebabs</li>
+                                <li>8x Chicken Strips</li>
+                                <li>2x Large Chips</li>
+                                <li>4x Dips of Choice</li>
+                                <li>Garlic Bread</li>
                             </ul>
+                            <div class="platter-tag">Group Feast</div>
                         </div>
                         
-                        <div class="platter-item fade-in-up" style="animation-delay: 0.4s;">
+                        <div class="platter-card fade-in-up" style="animation-delay: 0.4s;">
                             <h4 class="platter-name">Executive</h4>
-                            <div class="platter-serves">Serves 6</div>
+                            <div class="platter-serves"><i class="fas fa-crown"></i> Serves 6</div>
                             <div class="platter-price">R800</div>
                             <ul class="platter-items">
-                                <li>9x Wings</li>
-                                <li>9x Kebab</li>
-                                <li>9x Chicken Strips</li>
+                                <li>18x Chicken Wings</li>
+                                <li>12x Beef Kebabs</li>
+                                <li>12x Chicken Strips</li>
+                                <li>3x Large Chips</li>
+                                <li>6x Dips of Choice</li>
+                                <li>Garlic Bread</li>
+                                <li>Onion Rings</li>
                             </ul>
+                            <div class="platter-tag">Ultimate Sharing</div>
                         </div>
                     </div>
                 </div>
                 
+                <div class="menu-divider"></div>
+                
                 <div class="restaurant-category fade-in-right">
-                    <h3>Sandwich</h3>
-                    <div class="food-items">
-                        <div class="food-item fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="food-item-name">
-                                <h4>Chicken Mayo</h4>
-                                <span class="food-item-price">R90</span>
+                    <div class="category-header">
+                        <h3><i class="fas fa-bread-slice"></i> Sandwiches</h3>
+                        <div class="category-tagline">Freshly made sandwiches</div>
+                    </div>
+                    <div class="menu-cards">
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.1s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Chicken Mayo</h4>
+                                </div>
+                                <div class="menu-card-price">R90</div>
                             </div>
+                            <p class="menu-card-description">Grilled chicken breast with fresh lettuce, tomato, and creamy mayonnaise on toasted bread.</p>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="food-item-name">
-                                <h4>Dagwood</h4>
-                                <span class="food-item-price">R90</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>Dagwood</h4>
+                                </div>
+                                <div class="menu-card-price">R90</div>
                             </div>
+                            <p class="menu-card-description">Layers of ham, cheese, egg, tomato, and lettuce - the ultimate stacked sandwich.</p>
                         </div>
-                        <div class="food-item fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="food-item-name">
-                                <h4>French Toast</h4>
-                                <span class="food-item-price">R60</span>
+                        
+                        <div class="menu-card fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="menu-card-header">
+                                <div class="menu-card-name">
+                                    <h4>French Toast</h4>
+                                </div>
+                                <div class="menu-card-price">R60</div>
+                            </div>
+                            <p class="menu-card-description">Sweet French toast dusted with cinnamon sugar, served with syrup.</p>
+                            <div class="menu-card-tags">
+                                <span class="menu-tag"><i class="fas fa-pancakes"></i> Breakfast Style</span>
                             </div>
                         </div>
                     </div>
@@ -2125,7 +2888,7 @@
             }
             
             // ===== ADD HOVER EFFECTS =====
-            const menuItems = document.querySelectorAll('.menu-item, .food-item, .platter-item');
+            const menuItems = document.querySelectorAll('.bar-menu-item, .menu-card, .platter-card');
             menuItems.forEach(item => {
                 item.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-5px)';
