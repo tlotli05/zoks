@@ -460,124 +460,6 @@
             gap: 25px;
         }
         
-        /* ===== UPCOMING EVENT ===== */
-        .upcoming-event {
-            background-color: var(--dark-bg);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .upcoming-event:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(42,42,42,0.3)"/></svg>') no-repeat;
-            background-size: cover;
-            opacity: 0.3;
-        }
-        
-        .event-card {
-            background: var(--gradient-charcoal);
-            border-radius: 20px;
-            overflow: hidden;
-            max-width: 1000px;
-            margin: 0 auto;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-wrap: wrap;
-            border: 1px solid rgba(224, 193, 90, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .event-card:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(224, 193, 90, 0.1) 0%, transparent 70%);
-            z-index: 0;
-            animation: rotate 30s linear infinite;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .event-image {
-            flex: 1;
-            min-width: 350px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            min-height: 400px;
-            background: linear-gradient(45deg, var(--charcoal), var(--dark-bg));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-        }
-        
-        .poster-coming-soon {
-            text-align: center;
-            color: var(--warm-light);
-        }
-        
-        .poster-coming-soon i {
-            font-size: 5rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-            display: block;
-        }
-        
-        .poster-coming-soon h3 {
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .poster-coming-soon p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        .event-details {
-            flex: 1;
-            min-width: 350px;
-            padding: 50px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .event-details h3 {
-            font-size: 2.2rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-        
-        .event-date {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            color: var(--fire-orange);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        .event-date i {
-            margin-right: 12px;
-            font-size: 1.3rem;
-        }
-        
         /* ===== FEATURES SECTION ===== */
         .features {
             background-color: var(--charcoal);
@@ -670,142 +552,6 @@
             color: var(--warm-light);
             line-height: 1.8;
             margin-bottom: 30px;
-        }
-        
-        /* ===== BOTTLE PACKAGES ===== */
-        .packages {
-            background-color: var(--charcoal);
-            position: relative;
-        }
-        
-        .package-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 50px;
-        }
-        
-        .package-card {
-            background: var(--gradient-charcoal);
-            border-radius: 20px;
-            overflow: hidden;
-            width: 100%;
-            max-width: 360px;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(224, 193, 90, 0.1);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 650px;
-        }
-        
-        .package-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-            border-color: rgba(224, 193, 90, 0.4);
-        }
-        
-        .package-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: var(--gradient-fire);
-        }
-        
-        .package-header {
-            padding: 35px;
-            text-align: center;
-            background: rgba(26, 26, 26, 0.7);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .package-header:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transform: translateX(-100%);
-        }
-        
-        .package-card:hover .package-header:after {
-            animation: shine 1.5s ease;
-        }
-        
-        @keyframes shine {
-            100% { transform: translateX(100%); }
-        }
-        
-        .package-name {
-            font-size: 1.6rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .package-price {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--white);
-            line-height: 1;
-        }
-        
-        .package-price span {
-            font-size: 1.2rem;
-            color: var(--warm-light);
-            font-weight: 400;
-        }
-        
-        .package-details {
-            padding: 35px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .package-details ul {
-            list-style: none;
-            flex-grow: 1;
-        }
-        
-        .package-details li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(243, 231, 198, 0.1);
-            display: flex;
-            align-items: center;
-            font-size: 1rem;
-        }
-        
-        .package-details li:last-child {
-            border-bottom: none;
-        }
-        
-        .package-details i {
-            color: var(--gold);
-            margin-right: 12px;
-            font-size: 1rem;
-        }
-        
-        .package-card .btn {
-            width: 100%;
-            margin-top: 30px;
-        }
-        
-        .package-note {
-            text-align: center;
-            margin-top: 30px;
-            color: var(--warm-light);
-            font-style: italic;
-            opacity: 0.8;
-            font-size: 1rem;
         }
         
         /* ===== STREET FOOD SECTION - MANUAL CAROUSEL ONLY ===== */
@@ -1141,20 +887,11 @@
         }
         
         /* ===== IMAGE FIXES ===== */
-        .event-image:empty,
         .food-img:empty {
             background: linear-gradient(45deg, var(--charcoal), var(--card-bg));
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .event-image:empty:after {
-            content: 'Event Image';
-            color: var(--gold);
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1.2rem;
         }
         
         .food-img:empty:after {
@@ -1193,31 +930,8 @@
                 font-size: 2.5rem;
             }
             
-            .event-card {
-                flex-direction: column;
-            }
-            
-            .event-image, .event-details {
-                min-width: 100%;
-            }
-            
-            .event-image {
-                min-height: 350px;
-            }
-            
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .package-cards {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .package-card {
-                max-width: 100%;
-                height: auto;
-                min-height: 600px;
             }
             
             .food-carousel-container {
@@ -1324,16 +1038,8 @@
                 font-size: 1.2rem;
             }
             
-            .event-image {
-                min-height: 300px;
-            }
-            
             .food-item {
                 height: 320px;
-            }
-            
-            .package-card {
-                min-height: 550px;
             }
             
             .food-info-badge {
@@ -1406,14 +1112,6 @@
                 font-size: 2rem;
             }
             
-            .event-details {
-                padding: 35px;
-            }
-            
-            .package-header, .package-details {
-                padding: 25px;
-            }
-            
             .announcement-card {
                 padding: 40px 25px;
             }
@@ -1424,10 +1122,6 @@
             
             .food-item {
                 height: 300px;
-            }
-            
-            .event-image {
-                min-height: 250px;
             }
             
             .hero p {
@@ -1503,41 +1197,6 @@
                 <div class="hero-buttons">
                     <a href="events.html" class="btn btn-primary fade-in-left delay-200">View Upcoming Events</a>
                     <a href="menu.html" class="btn btn-secondary fade-in-right delay-300">Explore Menu</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Upcoming Event Section -->
-    <section class="upcoming-event">
-        <div class="container">
-            <div class="section-title fade-in-up">
-                <h2>Christmas Eve Celebration</h2>
-                <p class="title-subtext">The biggest party of the year - December 25, 2025</p>
-            </div>
-            
-            <div class="event-card fade-in">
-                <div class="event-image">
-                    <div class="poster-coming-soon">
-                        <i class="fas fa-calendar-alt"></i>
-                        <h3>Event Poster Coming Soon</h3>
-                        <p>Stay tuned for our amazing Christmas Eve celebration!<br>The poster will be revealed closer to the event date.</p>
-                    </div>
-                </div>
-                <div class="event-details">
-                    <h3>Christmas Mega Party</h3>
-                    <div class="event-date">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Wednesday, 25 December 2025 | 6:00 PM - 6:00 AM</span>
-                    </div>
-                    <p>Ring in Christmas with the biggest celebration Mmametlhake has ever seen! Featuring DJs, live performances, Christmas-themed street food, and fireworks at midnight. Dress code: Festive & Fabulous!</p>
-                    
-                    <div style="text-align: center; margin-top: 30px;">
-                        <div style="background: rgba(224, 193, 90, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(224, 193, 90, 0.3);">
-                            <i class="fas fa-gift" style="color: var(--gold); margin-right: 10px;"></i>
-                            <span style="color: var(--gold); font-weight: 600;">Free Entrance All Night!</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1622,76 +1281,6 @@
                     <a href="https://www.instagram.com/zodwana_2.0?igsh=a2Q0N2N2YmtxcXFs" target="_blank" class="social-icon fade-in-up delay-200"><i class="fab fa-instagram"></i></a>
                     <a href="https://wa.me/27606821708" target="_blank" class="social-icon fade-in-right delay-300"><i class="fab fa-whatsapp"></i></a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bottle Packages Section -->
-    <section class="packages">
-        <div class="container">
-            <div class="section-title fade-in-up">
-                <h2>Event Bottle Packages</h2>
-                <p class="title-subtext">Exclusive bottle service available during special events only</p>
-            </div>
-            
-            <div class="package-cards">
-                <div class="package-card fade-in-left delay-100">
-                    <div class="package-header">
-                        <h3 class="package-name">Bronze Package</h3>
-                        <div class="package-price">R899<span>/event</span></div>
-                    </div>
-                    <div class="package-details">
-                        <ul>
-                            <li><i class="fas fa-check"></i> 2x Johnnie Walker Black Label</li>
-                            <li><i class="fas fa-check"></i> 4x Mixers of Choice</li>
-                            <li><i class="fas fa-check"></i> Ice Bucket & Glasses</li>
-                            <li><i class="fas fa-check"></i> Reserved Table for 4</li>
-                            <li><i class="fas fa-check"></i> Complimentary Street Food Platter</li>
-                        </ul>
-                        <a href="contact.html" class="btn btn-secondary">Enquire Now</a>
-                    </div>
-                </div>
-                
-                <div class="package-card fade-in-up delay-200">
-                    <div class="package-header" style="background: rgba(26, 26, 26, 0.9);">
-                        <h3 class="package-name">Gold Package</h3>
-                        <div class="package-price">R1,699<span>/event</span></div>
-                    </div>
-                    <div class="package-details">
-                        <ul>
-                            <li><i class="fas fa-check"></i> 1x Hennessy VSOP</li>
-                            <li><i class="fas fa-check"></i> 1x Jameson Whiskey</li>
-                            <li><i class="fas fa-check"></i> 6x Mixers of Choice</li>
-                            <li><i class="fas fa-check"></i> Premium Table with VIP Service</li>
-                            <li><i class="fas fa-check"></i> Exclusive Food Pairing Menu</li>
-                            <li><i class="fas fa-check"></i> Sparkler Presentation</li>
-                        </ul>
-                        <a href="contact.html" class="btn btn-primary">Enquire Now</a>
-                    </div>
-                </div>
-                
-                <div class="package-card fade-in-right delay-300">
-                    <div class="package-header">
-                        <h3 class="package-name">Platinum Package</h3>
-                        <div class="package-price">R2,499<span>/event</span></div>
-                    </div>
-                    <div class="package-details">
-                        <ul>
-                            <li><i class="fas fa-check"></i> 2x Remy Martin VSOP</li>
-                            <li><i class="fas fa-check"></i> 1x Belvedere Vodka</li>
-                            <li><i class="fas fa-check"></i> Unlimited Mixers</li>
-                            <li><i class="fas fa-check"></i> Exclusive VIP Lounge Access</li>
-                            <li><i class="fas fa-check"></i> Dedicated Waitress Service</li>
-                            <li><i class="fas fa-check"></i> Premium Street Food Feast</li>
-                            <li><i class="fas fa-check"></i> Bottle Train Presentation</li>
-                        </ul>
-                        <a href="contact.html" class="btn btn-secondary">Enquire Now</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="package-note fade-in delay-400">
-                <p><i class="fas fa-info-circle" style="margin-right: 8px;"></i> Note: Bottle packages are only available during special events. Regular bar service available at all times.</p>
             </div>
         </div>
     </section>
@@ -2102,7 +1691,6 @@
             
             // ===== ADD HOVER EFFECTS =====
             const featureCards = document.querySelectorAll('.feature-card');
-            const packageCards = document.querySelectorAll('.package-card');
             
             featureCards.forEach(card => {
                 card.addEventListener('mouseenter', () => {
@@ -2111,16 +1699,6 @@
                 
                 card.addEventListener('mouseleave', () => {
                     card.style.transform = 'translateY(0)';
-                });
-            });
-            
-            packageCards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-15px) scale(1.02)';
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0) scale(1)';
                 });
             });
         }
