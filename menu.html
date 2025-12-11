@@ -1,0 +1,2172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu & Packages | Zodwana 2.0 Pub & Grill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== CSS RESET & BASE ===== */
+        :root {
+            --charcoal: #2A2A2A;
+            --gold: #E0C15A;
+            --fire-orange: #F5A045;
+            --warm-light: #F3E7C6;
+            --white: #FFFFFF;
+            --dark-bg: #1A1A1A;
+            --card-bg: #333333;
+            --gradient-gold: linear-gradient(135deg, var(--gold), #FFD166);
+            --gradient-fire: linear-gradient(135deg, var(--fire-orange), #FF9E5E);
+            --gradient-charcoal: linear-gradient(135deg, var(--charcoal), #1E1E1E);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--charcoal);
+            color: var(--warm-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        /* ===== ANIMATION CLASSES ===== */
+        .animate-left {
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-left.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-right {
+            opacity: 0;
+            transform: translateX(80px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-right.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-up.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animate-down {
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-down.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animate-fade {
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        .animate-fade.animate-in {
+            opacity: 1;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            display: inline-block;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-fire);
+            border-radius: 2px;
+        }
+        
+        .title-subtext {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            margin-top: 15px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 38px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            box-shadow: 0 8px 25px rgba(245, 160, 69, 0.3);
+        }
+        
+        .btn-primary:hover {
+            color: var(--charcoal);
+            box-shadow: 0 15px 35px rgba(245, 160, 69, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover:after {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(224, 193, 90, 0.1);
+            box-shadow: 0 10px 25px rgba(224, 193, 90, 0.2);
+            transform: translateY(-3px);
+            border-color: var(--fire-orange);
+            color: var(--fire-orange);
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(224, 193, 90, 0.1);
+            transform: translateY(0);
+            transition: all 0.4s ease;
+        }
+        
+        .main-header.hide {
+            transform: translateY(-100%);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--gold);
+        }
+        
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            margin-right: 12px;
+            box-shadow: 0 0 15px rgba(224, 193, 90, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(15deg);
+            box-shadow: 0 0 25px rgba(224, 193, 90, 0.7);
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtext {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--warm-light);
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 35px;
+            position: relative;
+        }
+        
+        .nav-menu a {
+            color: var(--warm-light);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-fire);
+            transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-menu a.active {
+            color: var(--gold);
+        }
+        
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+        
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            border: none;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .nav-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 4px 0;
+            transition: 0.4s;
+            border-radius: 2px;
+            display: block;
+        }
+        
+        .nav-toggle.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .nav-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .nav-toggle.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* ===== MENU HERO SECTION ===== */
+        .menu-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)), url('images/menu-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .menu-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(224, 193, 90, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(245, 160, 69, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .menu-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .menu-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        
+        .menu-hero h1 span {
+            color: var(--gold);
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+        
+        .menu-hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--warm-light);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        /* ===== MENU NAVIGATION TABS ===== */
+        .menu-navigation {
+            background-color: var(--dark-bg);
+            padding: 40px 0;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            border-bottom: 1px solid rgba(224, 193, 90, 0.1);
+        }
+        
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .menu-tab {
+            background: transparent;
+            border: 2px solid rgba(224, 193, 90, 0.3);
+            color: var(--warm-light);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .menu-tab:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+        
+        .menu-tab.active {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            border-color: transparent;
+            box-shadow: 0 10px 25px rgba(245, 160, 69, 0.3);
+        }
+        
+        .menu-tab.active:hover {
+            color: var(--charcoal);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(245, 160, 69, 0.5);
+        }
+        
+        /* ===== MENU CONTENT ===== */
+        .menu-content {
+            background-color: var(--charcoal);
+            min-height: 800px;
+        }
+        
+        .menu-section {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .menu-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ===== BAR MENU STYLES ===== */
+        .bar-category {
+            margin-bottom: 60px;
+        }
+        
+        .bar-category h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(245, 160, 69, 0.3);
+            position: relative;
+        }
+        
+        .bar-category h3:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--gradient-fire);
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .menu-item {
+            background: var(--gradient-charcoal);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(224, 193, 90, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .menu-item:hover {
+            border-color: rgba(224, 193, 90, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .menu-item-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .menu-item-name h4 {
+            font-size: 1.2rem;
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .menu-item-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        
+        .menu-item-description {
+            color: rgba(243, 231, 198, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* ===== RESTAURANT MENU STYLES ===== */
+        .restaurant-category {
+            margin-bottom: 60px;
+        }
+        
+        .restaurant-category h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(245, 160, 69, 0.3);
+            position: relative;
+        }
+        
+        .restaurant-category h3:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--gradient-fire);
+        }
+        
+        .food-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .food-item {
+            background: var(--gradient-charcoal);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(224, 193, 90, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .food-item:hover {
+            border-color: rgba(224, 193, 90, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .food-item-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .food-item-name h4 {
+            font-size: 1.2rem;
+            color: var(--white);
+            font-weight: 600;
+            flex: 1;
+        }
+        
+        .food-item-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-left: 15px;
+        }
+        
+        .food-item-description {
+            color: rgba(243, 231, 198, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .food-item-additions {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(243, 231, 198, 0.1);
+        }
+        
+        .additions-title {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .addition-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .addition-name {
+            color: rgba(243, 231, 198, 0.9);
+        }
+        
+        .addition-price {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        /* ===== PLATTERS STYLES ===== */
+        .platters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .platter-item {
+            background: var(--gradient-charcoal);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(224, 193, 90, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+        
+        .platter-item:hover {
+            border-color: rgba(224, 193, 90, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .platter-name {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .platter-serves {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .platter-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .platter-items {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        
+        .platter-items li {
+            padding: 5px 0;
+            color: rgba(243, 231, 198, 0.9);
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .platter-items li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+        
+        /* ===== EVENT PACKAGES SECTION ===== */
+        .event-packages {
+            background-color: var(--dark-bg);
+            position: relative;
+        }
+        
+        .package-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .package-card {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 360px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(224, 193, 90, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 650px;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            border-color: rgba(224, 193, 90, 0.4);
+        }
+        
+        .package-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--gradient-fire);
+        }
+        
+        .package-header {
+            padding: 35px;
+            text-align: center;
+            background: rgba(26, 26, 26, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-name {
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .package-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1;
+        }
+        
+        .package-price span {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            font-weight: 400;
+        }
+        
+        .package-details {
+            padding: 35px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .package-details ul {
+            list-style: none;
+            flex-grow: 1;
+        }
+        
+        .package-details li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(243, 231, 198, 0.1);
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+        
+        .package-details li:last-child {
+            border-bottom: none;
+        }
+        
+        .package-details i {
+            color: var(--gold);
+            margin-right: 12px;
+            font-size: 1rem;
+        }
+        
+        .package-card .btn {
+            width: 100%;
+            margin-top: 30px;
+        }
+        
+        /* ===== ORDER CTA SECTION ===== */
+        .order-cta {
+            background-color: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .order-cta:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(224, 193, 90, 0.05) 0%, transparent 50%);
+        }
+        
+        .order-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .order-content h2 {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .order-content p {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background-color: var(--dark-bg);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(224, 193, 90, 0.2);
+            position: relative;
+        }
+        
+        .main-footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L0,100 Z" fill="rgba(224,193,90,0.03)"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.5;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-fire);
+            border-radius: 3px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+            color: var(--warm-light);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.2rem;
+        }
+        
+        .social-icon:hover {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(245, 160, 69, 0.3);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--warm-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 8px;
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        
+        .contact-info i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(243, 231, 198, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .menu-hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .animate-left {
+                transform: translateX(-40px);
+            }
+            
+            .animate-right {
+                transform: translateX(40px);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .menu-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .menu-items, .food-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .platters-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .package-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .package-card {
+                max-width: 100%;
+                height: auto;
+                min-height: 600px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                flex-direction: column;
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(20px);
+                text-align: left;
+                transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                padding: 100px 30px 30px;
+                z-index: 999;
+                border-right: 1px solid rgba(224, 193, 90, 0.2);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 20px 0;
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                font-size: 1.2rem;
+                padding: 12px 0;
+                display: block;
+                width: 100%;
+            }
+            
+            .menu-hero {
+                height: 50vh;
+                margin-top: 70px;
+            }
+            
+            .menu-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .menu-hero p {
+                font-size: 1.2rem;
+                padding: 0 15px;
+            }
+            
+            .menu-tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .menu-tab {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+            
+            .menu-items, .food-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .platters-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            /* Prevent body scroll when menu is open */
+            body.menu-open {
+                overflow: hidden;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .menu-hero {
+                height: 45vh;
+            }
+            
+            .menu-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .menu-tab {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+            
+            .menu-item, .food-item, .platter-item {
+                padding: 20px;
+            }
+            
+            .package-header, .package-details {
+                padding: 25px;
+            }
+            
+            .order-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-menu {
+                width: 100%;
+                max-width: 100%;
+                padding: 100px 20px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">Z</div>
+                    <span class="logo-text">Zodwana 2.0 <span class="logo-subtext">Pub & Grill</span></span>
+                </a>
+                
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="menu.html" class="active">Menu & Packages</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Menu Hero Section -->
+    <section class="menu-hero">
+        <div class="container">
+            <div class="menu-hero-content animate-left">
+                <h1>Our <span>Menus</span></h1>
+                <p>Explore our premium bar selection and authentic South African restaurant offerings. From fine spirits to traditional dishes, we have something for everyone.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Navigation Tabs -->
+    <section class="menu-navigation">
+        <div class="container">
+            <div class="menu-tabs animate-up">
+                <button class="menu-tab active" data-target="bar-menu">Bar Menu</button>
+                <button class="menu-tab" data-target="restaurant-menu">Restaurant Menu</button>
+                <button class="menu-tab" data-target="event-packages">Event Packages</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bar Menu Section -->
+    <section class="menu-content">
+        <div class="container">
+            <div class="menu-section active" id="bar-menu">
+                <div class="section-title animate-up">
+                    <h2>Bar Menu</h2>
+                    <p class="title-subtext">Premium drinks and spirits selection</p>
+                </div>
+                
+                <div class="bar-category animate-left">
+                    <h3>Soft Drinks & Mixers</h3>
+                    <div class="menu-items">
+                        <div class="menu-item animate-fade">
+                            <div class="menu-item-name">
+                                <h4>Lemonade</h4>
+                                <span class="menu-item-price">R22</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="100">
+                            <div class="menu-item-name">
+                                <h4>Tonic</h4>
+                                <span class="menu-item-price">R22</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="200">
+                            <div class="menu-item-name">
+                                <h4>Sparkling Water</h4>
+                                <span class="menu-item-price">R20</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="300">
+                            <div class="menu-item-name">
+                                <h4>Coke</h4>
+                                <span class="menu-item-price">R15</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="400">
+                            <div class="menu-item-name">
+                                <h4>Redbull</h4>
+                                <span class="menu-item-price">R22</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="500">
+                            <div class="menu-item-name">
+                                <h4>Still Water</h4>
+                                <span class="menu-item-price">R20</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="600">
+                            <div class="menu-item-name">
+                                <h4>Cranberry</h4>
+                                <span class="menu-item-price">R25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bar-category animate-right">
+                    <h3>Ciders & Coolers</h3>
+                    <div class="menu-items">
+                        <div class="menu-item animate-fade">
+                            <div class="menu-item-name">
+                                <h4>Savanna Dry</h4>
+                                <span class="menu-item-price">R25</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="100">
+                            <div class="menu-item-name">
+                                <h4>Belgravia Gin & Tonic</h4>
+                                <span class="menu-item-price">R20</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="200">
+                            <div class="menu-item-name">
+                                <h4>Belgravia Gin & Dry Lemon</h4>
+                                <span class="menu-item-price">R20</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="300">
+                            <div class="menu-item-name">
+                                <h4>Brutal Fruit Ruby</h4>
+                                <span class="menu-item-price">R20</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="400">
+                            <div class="menu-item-name">
+                                <h4>Black Crown</h4>
+                                <span class="menu-item-price">R20</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="500">
+                            <div class="menu-item-name">
+                                <h4>Ice Tropez</h4>
+                                <span class="menu-item-price">R90</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="600">
+                            <div class="menu-item-name">
+                                <h4>Bernini</h4>
+                                <span class="menu-item-price">R20</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="700">
+                            <div class="menu-item-name">
+                                <h4>Hunters Extreme</h4>
+                                <span class="menu-item-price">R23</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bar-category animate-left">
+                    <h3>Beers</h3>
+                    <div class="menu-items">
+                        <div class="menu-item animate-fade">
+                            <div class="menu-item-name">
+                                <h4>Heineken</h4>
+                                <span class="menu-item-price">R21</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="100">
+                            <div class="menu-item-name">
+                                <h4>Stella Artois</h4>
+                                <span class="menu-item-price">R21</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="200">
+                            <div class="menu-item-name">
+                                <h4>Corona</h4>
+                                <span class="menu-item-price">R21</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="300">
+                            <div class="menu-item-name">
+                                <h4>Black Label</h4>
+                                <span class="menu-item-price">R20</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="400">
+                            <div class="menu-item-name">
+                                <h4>Flying Fish</h4>
+                                <span class="menu-item-price">R21</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="500">
+                            <div class="menu-item-name">
+                                <h4>Castle Lite</h4>
+                                <span class="menu-item-price">R20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bar-category animate-right">
+                    <h3>Champagnes</h3>
+                    <div class="menu-items">
+                        <div class="menu-item animate-fade">
+                            <div class="menu-item-name">
+                                <h4>Moet Nectar Imperial</h4>
+                                <span class="menu-item-price">R1,950</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="100">
+                            <div class="menu-item-name">
+                                <h4>Veuve Rich</h4>
+                                <span class="menu-item-price">R2,100</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="200">
+                            <div class="menu-item-name">
+                                <h4>Krone Night Nectar</h4>
+                                <span class="menu-item-price">R650</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bar-category animate-left">
+                    <h3>Cognacs</h3>
+                    <div class="menu-items">
+                        <div class="menu-item animate-fade">
+                            <div class="menu-item-name">
+                                <h4>Hennessy VS</h4>
+                                <span class="menu-item-price">R1,400</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="100">
+                            <div class="menu-item-name">
+                                <h4>Hennessy VSOP</h4>
+                                <span class="menu-item-price">R2,000</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="200">
+                            <div class="menu-item-name">
+                                <h4>Hennessy XO</h4>
+                                <span class="menu-item-price">R6,500</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="300">
+                            <div class="menu-item-name">
+                                <h4>Remy Martin VSOP</h4>
+                                <span class="menu-item-price">R1,600</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bar-category animate-right">
+                    <h3>Tequila & Liquers</h3>
+                    <div class="menu-items">
+                        <div class="menu-item animate-fade">
+                            <div class="menu-item-name">
+                                <h4>Don Julio Reposado</h4>
+                                <span class="menu-item-price">R1,800</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="100">
+                            <div class="menu-item-name">
+                                <h4>Olmeca Gold / Silver</h4>
+                                <span class="menu-item-price">R650</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="200">
+                            <div class="menu-item-name">
+                                <h4>Jagermeister</h4>
+                                <span class="menu-item-price">R750</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="300">
+                            <div class="menu-item-name">
+                                <h4>Jagermeister (Shot)</h4>
+                                <span class="menu-item-price">R30</span>
+                            </div>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="400">
+                            <div class="menu-item-name">
+                                <h4>Olmeca Gold / Silver (Shot)</h4>
+                                <span class="menu-item-price">R25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bar-category animate-left">
+                    <h3>Gin</h3>
+                    <div class="menu-items">
+                        <div class="menu-item animate-fade">
+                            <div class="menu-item-name">
+                                <h4>Tanqueray</h4>
+                                <span class="menu-item-price">R700</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bar-category animate-right">
+                    <h3>Wines</h3>
+                    <div class="menu-items">
+                        <div class="menu-item animate-fade">
+                            <div class="menu-item-name">
+                                <h4>Chateau Red / White</h4>
+                                <span class="menu-item-price">R22</span>
+                            </div>
+                            <p class="menu-item-description">Per glass</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bar-category animate-left">
+                    <h3>Hubbly</h3>
+                    <div class="menu-items">
+                        <div class="menu-item animate-fade">
+                            <div class="menu-item-name">
+                                <h4>Hubbly</h4>
+                                <span class="menu-item-price">R200</span>
+                            </div>
+                            <p class="menu-item-description">Full setup with flavors</p>
+                        </div>
+                        <div class="menu-item animate-fade" data-delay="100">
+                            <div class="menu-item-name">
+                                <h4>Refill</h4>
+                                <span class="menu-item-price">R100</span>
+                            </div>
+                            <p class="menu-item-description">Flavor refill only</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Restaurant Menu Section -->
+            <div class="menu-section" id="restaurant-menu">
+                <div class="section-title animate-up">
+                    <h2>Restaurant Menu</h2>
+                    <p class="title-subtext">Authentic South African cuisine</p>
+                </div>
+                
+                <div class="restaurant-category animate-left">
+                    <h3>Traditionals</h3>
+                    <div class="food-items">
+                        <div class="food-item animate-fade">
+                            <div class="food-item-name">
+                                <h4>Mogodu with sides</h4>
+                                <span class="food-item-price">R75</span>
+                            </div>
+                            <p class="food-item-description">Traditional tripe stew served with your choice of sides</p>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="100">
+                            <div class="food-item-name">
+                                <h4>Marapo with sides</h4>
+                                <span class="food-item-price">R60</span>
+                            </div>
+                            <p class="food-item-description">Bone marrow served with delicious sides</p>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="200">
+                            <div class="food-item-name">
+                                <h4>Trotters with side</h4>
+                                <span class="food-item-price">R50</span>
+                            </div>
+                            <p class="food-item-description">Slow-cooked trotters with your choice of side</p>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="300">
+                            <div class="food-item-name">
+                                <h4>Organic Chicken</h4>
+                                <span class="food-item-price">R70</span>
+                            </div>
+                            <p class="food-item-description">Free-range chicken prepared traditionally</p>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="400">
+                            <div class="food-item-name">
+                                <h4>Beef Stew</h4>
+                                <span class="food-item-price">R80</span>
+                            </div>
+                            <p class="food-item-description">Hearty beef stew with vegetables</p>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="500">
+                            <div class="food-item-name">
+                                <h4>Sunday Kos</h4>
+                                <span class="food-item-price">R90</span>
+                            </div>
+                            <p class="food-item-description">Traditional Sunday family meal with all the trimmings</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="restaurant-category animate-right">
+                    <h3>Sides</h3>
+                    <div class="food-items">
+                        <div class="food-item animate-fade">
+                            <div class="food-item-name">
+                                <h4>Gravy</h4>
+                                <span class="food-item-price">R20</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="100">
+                            <div class="food-item-name">
+                                <h4>Veg of the Day</h4>
+                                <span class="food-item-price">R15</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="200">
+                            <div class="food-item-name">
+                                <h4>Chakalaka</h4>
+                                <span class="food-item-price">R20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="restaurant-category animate-left">
+                    <h3>Kota / Spahtlho</h3>
+                    <div class="food-items">
+                        <div class="food-item animate-fade">
+                            <div class="food-item-name">
+                                <h4>Basic Kota</h4>
+                                <span class="food-item-price">R30</span>
+                            </div>
+                            <p class="food-item-description">Toasted bread, caramelised onion, lettuce, tomato and cheese</p>
+                            <div class="food-item-additions">
+                                <div class="additions-title">Additions:</div>
+                                <div class="addition-item">
+                                    <span class="addition-name">Egg</span>
+                                    <span class="addition-price">R5</span>
+                                </div>
+                                <div class="addition-item">
+                                    <span class="addition-name">Russian</span>
+                                    <span class="addition-price">R20</span>
+                                </div>
+                                <div class="addition-item">
+                                    <span class="addition-name">Beef Patty</span>
+                                    <span class="addition-price">R25</span>
+                                </div>
+                                <div class="addition-item">
+                                    <span class="addition-name">Chicken Breast</span>
+                                    <span class="addition-price">R20</span>
+                                </div>
+                                <div class="addition-item">
+                                    <span class="addition-name">Vienna</span>
+                                    <span class="addition-price">R15</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="restaurant-category animate-right">
+                    <h3>Chips</h3>
+                    <div class="food-items">
+                        <div class="food-item animate-fade">
+                            <div class="food-item-name">
+                                <h4>Small</h4>
+                                <span class="food-item-price">R25</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="100">
+                            <div class="food-item-name">
+                                <h4>Medium</h4>
+                                <span class="food-item-price">R35</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="200">
+                            <div class="food-item-name">
+                                <h4>Large</h4>
+                                <span class="food-item-price">R50</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="restaurant-category animate-left">
+                    <h3>Grills & Fries</h3>
+                    <div class="food-items">
+                        <div class="food-item animate-fade">
+                            <div class="food-item-name">
+                                <h4>4 Wings + Chips</h4>
+                                <span class="food-item-price">R55</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="100">
+                            <div class="food-item-name">
+                                <h4>6 Wings + Chips</h4>
+                                <span class="food-item-price">R75</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="200">
+                            <div class="food-item-name">
+                                <h4>8 Wings + Chips</h4>
+                                <span class="food-item-price">R110</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="300">
+                            <div class="food-item-name">
+                                <h4>12 Wings + Chips</h4>
+                                <span class="food-item-price">R140</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="restaurant-category animate-right">
+                    <h3>Chicken</h3>
+                    <div class="food-items">
+                        <div class="food-item animate-fade">
+                            <div class="food-item-name">
+                                <h4>Grilled 1/4 Chicken</h4>
+                                <span class="food-item-price">R70</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="100">
+                            <div class="food-item-name">
+                                <h4>Grilled 1/2 Chicken</h4>
+                                <span class="food-item-price">R100</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="200">
+                            <div class="food-item-name">
+                                <h4>Grilled Full Chicken</h4>
+                                <span class="food-item-price">R150</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="restaurant-category animate-left">
+                    <h3>Platters</h3>
+                    <div class="platters-grid">
+                        <div class="platter-item animate-fade">
+                            <h4 class="platter-name">Nix Mapha</h4>
+                            <div class="platter-serves">Serves 1</div>
+                            <div class="platter-price">R100</div>
+                            <ul class="platter-items">
+                                <li>2x Wings</li>
+                                <li>2x Kebab</li>
+                                <li>Chicken Strips</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="platter-item animate-fade" data-delay="100">
+                            <h4 class="platter-name">Mngan Wam</h4>
+                            <div class="platter-serves">Serves 2</div>
+                            <div class="platter-price">R250</div>
+                            <ul class="platter-items">
+                                <li>6x Wings</li>
+                                <li>4x Kebab</li>
+                                <li>4x Chicken Strips</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="platter-item animate-fade" data-delay="200">
+                            <h4 class="platter-name">Zonke Bonke</h4>
+                            <div class="platter-serves">Serves 4</div>
+                            <div class="platter-price">R750</div>
+                            <ul class="platter-items">
+                                <li>6x Wings</li>
+                                <li>6x Kebab</li>
+                                <li>6x Chicken Strips</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="platter-item animate-fade" data-delay="300">
+                            <h4 class="platter-name">Executive</h4>
+                            <div class="platter-serves">Serves 6</div>
+                            <div class="platter-price">R800</div>
+                            <ul class="platter-items">
+                                <li>9x Wings</li>
+                                <li>9x Kebab</li>
+                                <li>9x Chicken Strips</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="restaurant-category animate-right">
+                    <h3>Sandwich</h3>
+                    <div class="food-items">
+                        <div class="food-item animate-fade">
+                            <div class="food-item-name">
+                                <h4>Chicken Mayo</h4>
+                                <span class="food-item-price">R90</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="100">
+                            <div class="food-item-name">
+                                <h4>Dagwood</h4>
+                                <span class="food-item-price">R90</span>
+                            </div>
+                        </div>
+                        <div class="food-item animate-fade" data-delay="200">
+                            <div class="food-item-name">
+                                <h4>French Toast</h4>
+                                <span class="food-item-price">R60</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Event Packages Section -->
+            <div class="menu-section" id="event-packages">
+                <div class="section-title animate-up">
+                    <h2>Event Bottle Packages</h2>
+                    <p class="title-subtext">Exclusive bottle service available during special events only</p>
+                </div>
+                
+                <div class="package-cards">
+                    <div class="package-card animate-left">
+                        <div class="package-header">
+                            <h3 class="package-name">Bronze Package</h3>
+                            <div class="package-price">R899<span>/event</span></div>
+                        </div>
+                        <div class="package-details">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 2x Johnnie Walker Black Label</li>
+                                <li><i class="fas fa-check"></i> 4x Mixers of Choice</li>
+                                <li><i class="fas fa-check"></i> Ice Bucket & Glasses</li>
+                                <li><i class="fas fa-check"></i> Reserved Table for 4</li>
+                                <li><i class="fas fa-check"></i> Complimentary Street Food Platter</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-secondary">Enquire Now</a>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card animate-up" data-delay="100">
+                        <div class="package-header" style="background: rgba(26, 26, 26, 0.9);">
+                            <h3 class="package-name">Gold Package</h3>
+                            <div class="package-price">R1,699<span>/event</span></div>
+                        </div>
+                        <div class="package-details">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 1x Hennessy VSOP</li>
+                                <li><i class="fas fa-check"></i> 1x Jameson Whiskey</li>
+                                <li><i class="fas fa-check"></i> 6x Mixers of Choice</li>
+                                <li><i class="fas fa-check"></i> Premium Table with VIP Service</li>
+                                <li><i class="fas fa-check"></i> Exclusive Food Pairing Menu</li>
+                                <li><i class="fas fa-check"></i> Sparkler Presentation</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card animate-right" data-delay="200">
+                        <div class="package-header">
+                            <h3 class="package-name">Platinum Package</h3>
+                            <div class="package-price">R2,499<span>/event</span></div>
+                        </div>
+                        <div class="package-details">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 2x Remy Martin VSOP</li>
+                                <li><i class="fas fa-check"></i> 1x Belvedere Vodka</li>
+                                <li><i class="fas fa-check"></i> Unlimited Mixers</li>
+                                <li><i class="fas fa-check"></i> Exclusive VIP Lounge Access</li>
+                                <li><i class="fas fa-check"></i> Dedicated Waitress Service</li>
+                                <li><i class="fas fa-check"></i> Premium Street Food Feast</li>
+                                <li><i class="fas fa-check"></i> Bottle Train Presentation</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-secondary">Enquire Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="package-note animate-fade" style="text-align: center; margin-top: 50px; color: var(--warm-light); font-style: italic; opacity: 0.8;">
+                    <p><i class="fas fa-info-circle" style="margin-right: 8px;"></i> Note: Bottle packages are only available during special events. Regular bar service available at all times.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order CTA Section -->
+    <section class="order-cta">
+        <div class="container">
+            <div class="order-content animate-up">
+                <h2>Ready to Order?</h2>
+                <p>Visit us today to experience our premium bar selection and authentic South African cuisine. For event bookings and bottle service reservations, contact us directly.</p>
+                <a href="contact.html" class="btn btn-primary">Contact for Reservations</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column animate-left">
+                    <div class="footer-logo">
+                        <div class="logo-icon">Z</div>
+                        <span class="logo-text">Zodwana 2.0 <span class="logo-subtext">Pub & Grill</span></span>
+                    </div>
+                    <p class="footer-about">Mmametlhake's premier destination, offering premium drinks, authentic South African street food, and unforgettable events in an urban lounge atmosphere.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon animate-fade"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon animate-fade" data-delay="100"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon animate-fade" data-delay="200"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon animate-fade" data-delay="300"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column animate-up" data-delay="100">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="menu.html">Menu & Packages</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-column animate-right" data-delay="200">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Main Road, Mmametlhake<br>Mpumalanga, South Africa</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+27 12 345 6789</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@zodwanapub.co.za</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Wed-Fri: 8am-6pm<br>Sat-Sun: 9am-10pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright animate-up">
+                <p>&copy; 2025 Zodwana 2.0 Pub & Grill. All Rights Reserved. | Designed by Monarch Technologies Pty Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize all functionality when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM fully loaded");
+            initFunctionality();
+        });
+        
+        function initFunctionality() {
+            console.log("Initializing functionality...");
+            
+            // ===== MOBILE NAVIGATION =====
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (navToggle && navMenu) {
+                console.log("Mobile menu elements found");
+                
+                navToggle.addEventListener('click', function() {
+                    console.log("Hamburger menu clicked");
+                    navMenu.classList.toggle('active');
+                    navToggle.classList.toggle('active');
+                    
+                    // Toggle body scroll
+                    if (navMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+                
+                // Close menu when clicking on links
+                const navLinks = navMenu.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (navMenu.classList.contains('active') && 
+                        !navMenu.contains(event.target) && 
+                        !navToggle.contains(event.target)) {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+                
+                // Close menu with Escape key
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            } else {
+                console.log("Mobile menu elements NOT found");
+            }
+            
+            // ===== MENU TABS =====
+            const menuTabs = document.querySelectorAll('.menu-tab');
+            const menuSections = document.querySelectorAll('.menu-section');
+            
+            if (menuTabs.length > 0 && menuSections.length > 0) {
+                menuTabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        const targetId = this.getAttribute('data-target');
+                        
+                        // Remove active class from all tabs
+                        menuTabs.forEach(t => t.classList.remove('active'));
+                        // Add active class to clicked tab
+                        this.classList.add('active');
+                        
+                        // Hide all sections
+                        menuSections.forEach(section => {
+                            section.classList.remove('active');
+                        });
+                        
+                        // Show target section
+                        const targetSection = document.getElementById(targetId);
+                        if (targetSection) {
+                            targetSection.classList.add('active');
+                            
+                            // Trigger animations for new section
+                            setTimeout(() => {
+                                checkScrollAnimations();
+                            }, 100);
+                        }
+                        
+                        // Close mobile menu if open
+                        if (navMenu && navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            navToggle.classList.remove('active');
+                            document.body.style.overflow = 'auto';
+                        }
+                    });
+                });
+            }
+            
+            // ===== HEADER SCROLL EFFECT =====
+            const header = document.querySelector('.main-header');
+            let lastScrollTop = 0;
+            
+            if (header) {
+                window.addEventListener('scroll', function() {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    // Header padding on scroll
+                    if (scrollTop > 50) {
+                        header.style.padding = '15px 0';
+                    } else {
+                        header.style.padding = '25px 0';
+                    }
+                    
+                    // Hide/show header on scroll
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        // Scrolling down
+                        header.classList.add('hide');
+                    } else {
+                        // Scrolling up
+                        header.classList.remove('hide');
+                    }
+                    
+                    lastScrollTop = scrollTop;
+                });
+            }
+            
+            // ===== SCROLL ANIMATIONS =====
+            function checkScrollAnimations() {
+                const animatedElements = document.querySelectorAll(
+                    '.animate-left, .animate-right, .animate-up, .animate-down, .animate-fade'
+                );
+                
+                animatedElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        const delay = element.getAttribute('data-delay') || 0;
+                        
+                        setTimeout(() => {
+                            element.classList.add('animate-in');
+                        }, parseInt(delay));
+                    }
+                });
+            }
+            
+            // Initial check for animations
+            checkScrollAnimations();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScrollAnimations);
+            
+            // ===== ADD HOVER EFFECTS =====
+            const menuItems = document.querySelectorAll('.menu-item, .food-item, .platter-item');
+            menuItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.2)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+            
+            // ===== FORMAT PRICES =====
+            function formatPrices() {
+                const priceElements = document.querySelectorAll('.menu-item-price, .food-item-price, .platter-price, .addition-price');
+                
+                priceElements.forEach(element => {
+                    let text = element.textContent;
+                    if (text.includes('R')) {
+                        // Extract number from price
+                        let price = text.replace('R', '').replace(',', '').trim();
+                        if (!isNaN(price) && price >= 1000) {
+                            // Format with thousands separator
+                            element.textContent = 'R' + Number(price).toLocaleString('en-ZA');
+                        }
+                    }
+                });
+            }
+            
+            formatPrices();
+            
+            // ===== HANDLE PAGE HASH =====
+            if (window.location.hash) {
+                const hash = window.location.hash.substring(1);
+                const validSections = ['bar-menu', 'restaurant-menu', 'event-packages'];
+                
+                if (validSections.includes(hash)) {
+                    setTimeout(() => {
+                        const targetTab = document.querySelector(`.menu-tab[data-target="${hash}"]`);
+                        if (targetTab) {
+                            targetTab.click();
+                            // Scroll to menu navigation
+                            const menuNav = document.querySelector('.menu-navigation');
+                            if (menuNav) {
+                                window.scrollTo({
+                                    top: menuNav.offsetTop - 100,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }
+                    }, 500);
+                }
+            }
+            
+            // ===== ADD LOADING ANIMATION FOR IMAGES =====
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    this.classList.add('loaded');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

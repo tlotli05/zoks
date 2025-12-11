@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Zodwana Pub & Grill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== CSS RESET & BASE ===== */
+        :root {
+            --charcoal: #2A2A2A;
+            --gold: #E0C15A;
+            --fire-orange: #F5A045;
+            --warm-light: #F3E7C6;
+            --white: #FFFFFF;
+            --dark-bg: #1A1A1A;
+            --card-bg: #333333;
+            --gradient-gold: linear-gradient(135deg, var(--gold), #FFD166);
+            --gradient-fire: linear-gradient(135deg, var(--fire-orange), #FF9E5E);
+            --gradient-charcoal: linear-gradient(135deg, var(--charcoal), #1E1E1E);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--charcoal);
+            color: var(--warm-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        /* ===== FADE ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            display: inline-block;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-fire);
+            border-radius: 2px;
+        }
+        
+        .title-subtext {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            margin-top: 15px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 38px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            box-shadow: 0 8px 25px rgba(245, 160, 69, 0.3);
+        }
+        
+        .btn-primary:hover {
+            color: var(--charcoal);
+            box-shadow: 0 15px 35px rgba(245, 160, 69, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover:after {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(224, 193, 90, 0.1);
+            box-shadow: 0 10px 25px rgba(224, 193, 90, 0.2);
+            transform: translateY(-3px);
+            border-color: var(--fire-orange);
+            color: var(--fire-orange);
+        }
+        
+        /* ===== MOBILE-FRIENDLY BUTTONS ===== */
+        .btn-mobile-friendly {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        
+        /* ===== PREMIUM iOS-STYLE ICONS ===== */
+        .ios-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .ios-icon:hover {
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ios-icon i {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-bottom: 1px solid rgba(224, 193, 90, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--gold);
+        }
+        
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            margin-right: 12px;
+            box-shadow: 0 0 15px rgba(224, 193, 90, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(15deg);
+            box-shadow: 0 0 25px rgba(224, 193, 90, 0.7);
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtext {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--warm-light);
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 35px;
+            position: relative;
+        }
+        
+        .nav-menu a {
+            color: var(--warm-light);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-fire);
+            transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-menu a.active {
+            color: var(--gold);
+        }
+        
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+        
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nav-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 3px 0;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+        
+        .nav-toggle.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .nav-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .nav-toggle.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* ===== CONTACT HERO SECTION ===== */
+        .contact-hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)), url('images/contact-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .contact-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(224, 193, 90, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(245, 160, 69, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .contact-hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        
+        .contact-hero h1 span {
+            color: var(--gold);
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+        
+        .contact-hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--warm-light);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        /* ===== CONTACT INFO SECTION ===== */
+        .contact-info-section {
+            background-color: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(42,42,42,0.3)"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .contact-card {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(224, 193, 90, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .contact-card p {
+            color: var(--warm-light);
+            opacity: 0.8;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .contact-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-detail-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--warm-light);
+        }
+        
+        .contact-detail-item i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        /* ===== MAP SECTION ===== */
+        .map-section {
+            background-color: var(--charcoal);
+            position: relative;
+            padding: 80px 0;
+        }
+        
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(224, 193, 90, 0.2);
+            height: 500px;
+            position: relative;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-charcoal);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--warm-light);
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .map-placeholder i {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .map-placeholder h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        .map-placeholder p {
+            max-width: 500px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .mobile-map-button {
+            display: none;
+        }
+        
+        /* ===== HOURS SECTION ===== */
+        .hours-section {
+            background-color: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hours-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .hours-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hours-text h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .hours-text h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-fire);
+            border-radius: 2px;
+        }
+        
+        .hours-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(243, 231, 198, 0.1);
+            color: var(--warm-light);
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-list .day {
+            font-weight: 600;
+        }
+        
+        .hours-list .time {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .hours-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hours-img-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(224, 193, 90, 0.2);
+            position: relative;
+            height: 400px;
+        }
+        
+        .hours-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+        
+        .hours-img-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* ===== SOCIAL CONNECT SECTION ===== */
+        .social-connect {
+            background-color: var(--charcoal);
+            position: relative;
+            text-align: center;
+        }
+        
+        .social-connect:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(224, 193, 90, 0.05) 0%, transparent 50%);
+        }
+        
+        .social-content h2 {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .social-content p {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .social-icons-large {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .social-icon-large {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-icon-large:hover {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-icon-large.facebook:hover {
+            background: #1877F2;
+            color: white;
+        }
+        
+        .social-icon-large.instagram:hover {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+        }
+        
+        .social-icon-large.whatsapp:hover {
+            background: #25D366;
+            color: white;
+        }
+        
+        /* ===== LEGAL SECTION ===== */
+        .legal-section {
+            background-color: var(--dark-bg);
+            border-top: 1px solid rgba(224, 193, 90, 0.1);
+            padding: 60px 0 40px;
+        }
+        
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: rgba(243, 231, 198, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .legal-content h3 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .legal-content p {
+            margin-bottom: 15px;
+        }
+        
+        .legal-content .copyright-notice {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .designer-credit {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: rgba(243, 231, 198, 0.5);
+        }
+        
+        .designer-credit a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .designer-credit a:hover {
+            color: var(--fire-orange);
+        }
+        
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background-color: var(--dark-bg);
+            padding: 80px 0 0;
+            border-top: 1px solid rgba(224, 193, 90, 0.2);
+            position: relative;
+        }
+        
+        .main-footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L0,100 Z" fill="rgba(224,193,90,0.03)"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.5;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-fire);
+            border-radius: 3px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+            color: var(--warm-light);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.2rem;
+        }
+        
+        .social-icon:hover {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(245, 160, 69, 0.3);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--warm-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 8px;
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        
+        .contact-info i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(243, 231, 198, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .contact-hero h1 {
+                font-size: 4rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .contact-hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hours-content {
+                flex-direction: column;
+            }
+            
+            .hours-text, .hours-image {
+                min-width: 100%;
+            }
+            
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .social-icons-large {
+                flex-wrap: wrap;
+            }
+            
+            .map-placeholder {
+                padding: 30px;
+            }
+            
+            .map-placeholder h3 {
+                font-size: 1.6rem;
+            }
+            
+            .map-placeholder p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(20px);
+                text-align: center;
+                transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                padding: 30px 0;
+                z-index: 999;
+                border-top: 1px solid rgba(224, 193, 90, 0.2);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .contact-hero {
+                height: 60vh;
+                margin-top: 70px;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .contact-hero p {
+                font-size: 1.2rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* FIXED MOBILE MAP STYLES - NO MORE BLANK SPACE */
+            .map-container {
+                display: none; /* Hide entire desktop map container on mobile */
+            }
+            
+            .mobile-map-button {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 20px;
+                padding: 0;
+                width: 100%;
+            }
+            
+            .mobile-map-button h3 {
+                font-size: 1.8rem;
+                color: var(--gold);
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            
+            .mobile-map-button p {
+                font-size: 1rem;
+                margin-bottom: 25px;
+                max-width: 500px;
+                line-height: 1.6;
+            }
+            
+            .map-button-container {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .map-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+                padding: 18px 25px;
+                font-size: 1.1rem;
+                width: 100%;
+            }
+            
+            /* Hide the section title on mobile for map section */
+            .map-section .section-title {
+                display: none;
+            }
+            
+            /* Reduce padding for map section on mobile */
+            .map-section {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+            
+            .social-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .social-icon-large {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
+            }
+            
+            .hours-img-container {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .contact-hero {
+                height: 50vh;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hours-text h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-card {
+                padding: 30px 20px;
+            }
+            
+            .social-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .social-icons-large {
+                gap: 20px;
+            }
+            
+            .social-icon-large {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .map-button-container {
+                max-width: 100%;
+            }
+            
+            .map-btn {
+                width: 100%;
+                padding: 16px 20px;
+                font-size: 1rem;
+            }
+            
+            .mobile-map-button h3 {
+                font-size: 1.6rem;
+            }
+            
+            .mobile-map-button p {
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .mobile-map-button h3 {
+                font-size: 1.5rem;
+            }
+            
+            .social-icons-large {
+                gap: 15px;
+            }
+            
+            .social-icon-large {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">Z</div>
+                    <span class="logo-text">Zodwana <span class="logo-subtext">Pub & Grill</span></span>
+                </a>
+                
+                <div class="nav-toggle" id="navToggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="menu.html">Menu & Packages</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="contact-hero-content fade-in">
+                <h1>Find <span>Us</span></h1>
+                <p>Visit us at our prime location in Mmametlhake. Whether you're joining us for food, drinks, or an unforgettable event, we're easy to find and ready to welcome you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Get In Touch</h2>
+                <p class="title-subtext">Multiple ways to connect with Zodwana Pub & Grill</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card fade-in-left">
+                    <div class="ios-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Our Location</h3>
+                    <p>Visit us at Zodwana 2.0 in Napier, Mmametlhake</p>
+                    <div class="contact-detail">
+                        <div class="contact-detail-item">
+                            <i class="fas fa-location-dot"></i>
+                            <span>Zodwana 2.0, Napier<br>Mmametlhake, Mpumalanga, South Africa</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card fade-in-up">
+                    <div class="ios-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>Reach out by phone for reservations or enquiries</p>
+                    <div class="contact-detail">
+                        <div class="contact-detail-item">
+                            <i class="fas fa-phone-volume"></i>
+                            <span>+27 72 410 5683</span>
+                        </div>
+                        <div class="contact-detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Available during business hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card fade-in-right">
+                    <div class="ios-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email & Social</h3>
+                    <p>Connect with us online for updates and messages</p>
+                    <div class="contact-detail">
+                        <div class="contact-detail-item">
+                            <i class="fas fa-at"></i>
+                            <span>zodwana2.0@gmail.com</span>
+                        </div>
+                        <div class="contact-detail-item">
+                            <i class="fas fa-hashtag"></i>
+                            <span>Follow us on social media</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Find Our Location</h2>
+                <p class="title-subtext">Located at Zodwana 2.0 in Napier, Mmametlhake, Mpumalanga</p>
+            </div>
+            
+            <!-- Desktop Map - Hidden on Mobile -->
+            <div class="map-container fade-in">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-location-dot"></i>
+                    <h3>Find Us on Google Maps</h3>
+                    <p>Click the button below to open our exact location in Google Maps. You can get directions, view the area, and save our location for your next visit.</p>
+                    <a href="https://maps.app.goo.gl/ceSYhhQabjSWEKWc6?g_st=ipc" target="_blank" class="btn btn-primary btn-mobile-friendly" style="margin-top: 20px;">
+                        <i class="fas fa-search-location"></i> Search on Google Maps
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Map - Hidden on Desktop -->
+            <div class="mobile-map-button fade-in-up">
+                <h3>Find Our Location</h3>
+                <p>Get directions to Zodwana Pub & Grill directly from your phone. Tap the button below to open in Google Maps.</p>
+                
+                <div class="map-button-container">
+                    <a href="https://maps.app.goo.gl/ceSYhhQabjSWEKWc6?g_st=ipc" target="_blank" class="btn btn-primary map-btn">
+                        <i class="fas fa-search-location"></i> Open Google Maps
+                    </a>
+                </div>
+                
+                <p style="margin-top: 20px; font-size: 0.9rem; color: rgba(243, 231, 198, 0.7);">
+                    <i class="fas fa-info-circle"></i> Tap to open in Google Maps for directions
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours Section -->
+    <section class="hours-section">
+        <div class="container">
+            <div class="hours-content">
+                <div class="hours-text fade-in-left">
+                    <h2>Opening Hours</h2>
+                    <p>Visit us during our operating hours for food, drinks, and good vibes. We occasionally host special events that may extend our hours.</p>
+                    
+                    <ul class="hours-list">
+                        <li>
+                            <span class="day">Monday - Friday</span>
+                            <span class="time">8:00 AM - 6:00 PM</span>
+                        </li>
+                        <li>
+                            <span class="day">Weekends</span>
+                            <span class="time">9:00 AM - 10:00 PM</span>
+                        </li>
+                        <li>
+                            <span class="day">Special Events</span>
+                            <span class="time">Extended Hours Apply</span>
+                        </li>
+                    </ul>
+                    
+                    <p style="margin-top: 25px; font-style: italic; color: var(--gold);">
+                        <i class="fas fa-info-circle"></i> Hours may vary during special events and holidays.
+                    </p>
+                </div>
+                
+                <div class="hours-image fade-in-right">
+                    <div class="hours-img-container">
+                        <img src="images/interior.jpg" alt="Zodwana Pub Interior">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Connect Section -->
+    <section class="social-connect">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Connect With Us</h2>
+                <p class="title-subtext">Follow us on social media for the latest updates, events, and specials</p>
+            </div>
+            
+            <div class="social-content fade-in">
+                <p>Stay connected with Zodwana Pub & Grill through our social channels. Get real-time updates on events, see photos from our latest gatherings, and be the first to know about special offers.</p>
+                
+                <div class="social-icons-large">
+                    <a href="https://www.facebook.com/share/1b1ffE4a11/?mibextid=wwXIfr" target="_blank" class="social-icon-large facebook fade-in-up">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/zodwana_2.0?igsh=a2Q0N2N2YmtxcXFs" target="_blank" class="social-icon-large instagram fade-in-up" style="transition-delay: 0.1s;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/27724105683" target="_blank" class="social-icon-large whatsapp fade-in-up" style="transition-delay: 0.2s;">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                
+                <div style="margin-top: 50px;" class="fade-in-up" style="transition-delay: 0.3s;">
+                    <a href="https://wa.me/27724105683" target="_blank" class="btn btn-primary" style="margin-right: 15px;">
+                        <i class="fab fa-whatsapp"></i> Message us on WhatsApp
+                    </a>
+                    <a href="https://www.facebook.com/share/1b1ffE4a11/?mibextid=wwXIfr" target="_blank" class="btn btn-secondary">
+                        <i class="fab fa-facebook-f"></i> Follow on Facebook
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Section -->
+    <section class="legal-section">
+        <div class="container">
+            <div class="legal-content fade-in">
+                <h3>Legal Notice & Intellectual Property Rights</h3>
+                <p>All images, graphics, text, and content displayed on this website are the exclusive property of Zodwana Pub & Grill and are protected by international copyright laws. No images, photographs, or content from this website may be reproduced, distributed, modified, or used for any commercial or marketing purposes without prior written consent from Zodwana Pub & Grill.</p>
+                <p>Unauthorized use of any materials from this website may violate copyright, trademark, and other laws. Zodwana Pub & Grill reserves all rights to take legal action against any unauthorized use of its intellectual property.</p>
+                <p>This website and all its contents are provided "as is" without warranty of any kind, either express or implied. Zodwana Pub & Grill shall not be liable for any damages arising from the use of this website or its contents.</p>
+                
+                <div class="copyright-notice">
+                    <p>&copy; 2025 Zodwana Pub & Grill. All Rights Reserved.</p>
+                    <p>Zodwana 2.0, Napier, Mmametlhake, Mpumalanga, South Africa</p>
+                </div>
+                
+                <div class="designer-credit">
+                    <p>Website designed and developed by <a href="https://www.monarchtechnologies.co.za/" target="_blank">Monarch Technologies Pty LTD</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column fade-in-left">
+                    <div class="footer-logo">
+                        <div class="logo-icon">Z</div>
+                        <span class="logo-text">Zodwana <span class="logo-subtext">Pub & Grill</span></span>
+                    </div>
+                    <p class="footer-about">Mmametlhake's premier nightlife destination, offering premium drinks, authentic South African street food, and unforgettable events in an urban lounge atmosphere.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1b1ffE4a11/?mibextid=wwXIfr" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/zodwana_2.0?igsh=a2Q0N2N2YmtxcXFs" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/27724105683" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column fade-in-up">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="menu.html">Menu & Packages</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-column fade-in-right">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Zodwana 2.0, Napier, Mmametlhake<br>Mpumalanga, South Africa</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+27 72 410 5683</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>zodwana2.0@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 8AM - 6PM<br>Weekends: 9AM - 10PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright fade-in-up">
+                <p>&copy; 2025 Zodwana Pub & Grill. All Rights Reserved. | Designed for Mmametlhake's Nightlife</p>
+                <p style="margin-top: 10px; font-size: 0.85rem; color: rgba(243, 231, 198, 0.5);">
+                    Website designed by <a href="https://www.monarchtechnologies.co.za/" target="_blank" style="color: var(--gold);">Monarch Technologies Pty LTD</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize all animations immediately
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Toggle
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+            
+            // Image hover effects
+            const imageContainers = document.querySelectorAll('.hours-img-container');
+            imageContainers.forEach(container => {
+                container.addEventListener('mouseenter', () => {
+                    const img = container.querySelector('img');
+                    img.style.transform = 'scale(1.05)';
+                });
+                
+                container.addEventListener('mouseleave', () => {
+                    const img = container.querySelector('img');
+                    img.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Social icon hover effects
+            const socialIcons = document.querySelectorAll('.social-icon-large');
+            socialIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', () => {
+                    icon.style.transform = 'translateY(-10px) scale(1.1)';
+                });
+                
+                icon.addEventListener('mouseleave', () => {
+                    icon.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Google Maps button click tracking
+            const mapsBtn = document.querySelector('.btn-primary[href*="maps.app.goo.gl"]');
+            if (mapsBtn) {
+                mapsBtn.addEventListener('click', function(e) {
+                    console.log('User clicked on Google Maps search button');
+                });
+            }
+            
+            // WhatsApp click tracking
+            const whatsappBtn = document.querySelector('a[href*="wa.me"]');
+            if (whatsappBtn) {
+                whatsappBtn.addEventListener('click', function(e) {
+                    console.log('User clicked on WhatsApp button');
+                });
+            }
+            
+            // Fade animation on scroll
+            function checkFade() {
+                const fadeElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-up');
+                
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkFade();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkFade);
+            
+            // Add smooth loading effect for images
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.style.opacity = '0';
+                img.style.transition = 'opacity 0.6s ease';
+                
+                img.onload = function() {
+                    img.style.opacity = '1';
+                };
+                
+                // If image is already loaded
+                if (img.complete) {
+                    img.style.opacity = '1';
+                }
+            });
+            
+            // Add ripple effect to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const x = e.clientX - e.target.getBoundingClientRect().left;
+                    const y = e.clientY - e.target.getBoundingClientRect().top;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+        
+        // Add ripple effect styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .ripple {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+                width: 20px;
+                height: 20px;
+                margin-left: -10px;
+                margin-top: -10px;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

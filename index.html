@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zodwana 2.0 Pub & Grill | Home of Good Vibes & Good Music</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== CSS RESET & BASE ===== */
+        :root {
+            --charcoal: #2A2A2A;
+            --gold: #E0C15A;
+            --fire-orange: #F5A045;
+            --warm-light: #F3E7C6;
+            --white: #FFFFFF;
+            --dark-bg: #1A1A1A;
+            --card-bg: #333333;
+            --gradient-gold: linear-gradient(135deg, var(--gold), #FFD166);
+            --gradient-fire: linear-gradient(135deg, var(--fire-orange), #FF9E5E);
+            --gradient-charcoal: linear-gradient(135deg, var(--charcoal), #1E1E1E);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--charcoal);
+            color: var(--warm-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        /* ===== FADE ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in-down {
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible,
+        .fade-in-up.visible,
+        .fade-in-down.visible,
+        .fade-in-left.visible,
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translate(0);
+        }
+        
+        /* Staggered animation delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
+        .delay-600 { transition-delay: 600ms; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            display: inline-block;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-fire);
+            border-radius: 2px;
+        }
+        
+        .title-subtext {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            margin-top: 15px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 38px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            box-shadow: 0 8px 25px rgba(245, 160, 69, 0.3);
+        }
+        
+        .btn-primary:hover {
+            color: var(--charcoal);
+            box-shadow: 0 15px 35px rgba(245, 160, 69, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover:after {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(224, 193, 90, 0.1);
+            box-shadow: 0 10px 25px rgba(224, 193, 90, 0.2);
+            transform: translateY(-3px);
+            border-color: var(--fire-orange);
+            color: var(--fire-orange);
+        }
+        
+        /* ===== PREMIUM iOS-STYLE ICONS ===== */
+        .ios-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .ios-icon:hover {
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ios-icon i {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(224, 193, 90, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--gold);
+        }
+        
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            margin-right: 12px;
+            box-shadow: 0 0 15px rgba(224, 193, 90, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(15deg);
+            box-shadow: 0 0 25px rgba(224, 193, 90, 0.7);
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtext {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--warm-light);
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 35px;
+            position: relative;
+        }
+        
+        .nav-menu a {
+            color: var(--warm-light);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-fire);
+            transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-menu a.active {
+            color: var(--gold);
+        }
+        
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+        
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            border: none;
+            z-index: 1001;
+        }
+        
+        .nav-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 4px 0;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+        
+        .nav-toggle.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .nav-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .nav-toggle.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url('images/hero-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+        
+        .hero h1 .main-title {
+            display: block;
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .hero h1 .subtitle {
+            color: var(--gold);
+            display: block;
+            font-size: 4rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        
+        .hero h1 .subtitle:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: var(--gradient-fire);
+            border-radius: 3px;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 750px;
+            margin: 0 auto 50px;
+            color: var(--warm-light);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        /* ===== UPCOMING EVENT ===== */
+        .upcoming-event {
+            background-color: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .upcoming-event:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(42,42,42,0.3)"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .event-card {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-wrap: wrap;
+            border: 1px solid rgba(224, 193, 90, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .event-card:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(224, 193, 90, 0.1) 0%, transparent 70%);
+            z-index: 0;
+            animation: rotate 30s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .event-image {
+            flex: 1;
+            min-width: 350px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            min-height: 400px;
+            background: linear-gradient(45deg, var(--charcoal), var(--dark-bg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        
+        .poster-coming-soon {
+            text-align: center;
+            color: var(--warm-light);
+        }
+        
+        .poster-coming-soon i {
+            font-size: 5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .poster-coming-soon h3 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .poster-coming-soon p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .event-details {
+            flex: 1;
+            min-width: 350px;
+            padding: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .event-details h3 {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .event-date {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            color: var(--fire-orange);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .event-date i {
+            margin-right: 12px;
+            font-size: 1.3rem;
+        }
+        
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            background-color: var(--charcoal);
+            padding: 100px 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(224, 193, 90, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .feature-card p {
+            color: var(--warm-light);
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+        
+        /* ===== ANNOUNCEMENTS SECTION ===== */
+        .announcements {
+            background-color: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .announcements:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(224, 193, 90, 0.05) 0%, transparent 50%);
+        }
+        
+        .announcement-card {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            border: 1px solid rgba(224, 193, 90, 0.2);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .announcement-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(224, 193, 90, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 48px;
+            color: var(--gold);
+            border: 2px solid rgba(224, 193, 90, 0.3);
+        }
+        
+        .announcement-card h3 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .announcement-card p {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        /* ===== BOTTLE PACKAGES ===== */
+        .packages {
+            background-color: var(--charcoal);
+            position: relative;
+        }
+        
+        .package-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .package-card {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 360px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(224, 193, 90, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 650px;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            border-color: rgba(224, 193, 90, 0.4);
+        }
+        
+        .package-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--gradient-fire);
+        }
+        
+        .package-header {
+            padding: 35px;
+            text-align: center;
+            background: rgba(26, 26, 26, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .package-header:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            transform: translateX(-100%);
+        }
+        
+        .package-card:hover .package-header:after {
+            animation: shine 1.5s ease;
+        }
+        
+        @keyframes shine {
+            100% { transform: translateX(100%); }
+        }
+        
+        .package-name {
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .package-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1;
+        }
+        
+        .package-price span {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            font-weight: 400;
+        }
+        
+        .package-details {
+            padding: 35px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .package-details ul {
+            list-style: none;
+            flex-grow: 1;
+        }
+        
+        .package-details li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(243, 231, 198, 0.1);
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+        
+        .package-details li:last-child {
+            border-bottom: none;
+        }
+        
+        .package-details i {
+            color: var(--gold);
+            margin-right: 12px;
+            font-size: 1rem;
+        }
+        
+        .package-card .btn {
+            width: 100%;
+            margin-top: 30px;
+        }
+        
+        .package-note {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--warm-light);
+            font-style: italic;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+        
+        /* ===== STREET FOOD SECTION - MANUAL CAROUSEL ONLY ===== */
+        .street-food {
+            background-color: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .street-food:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L100,0 L100,100 Z" fill="rgba(245,160,69,0.05)"/></svg>') no-repeat;
+            background-size: cover;
+        }
+        
+        .food-carousel-container {
+            position: relative;
+            padding: 0 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .food-carousel-wrapper {
+            overflow: hidden;
+            position: relative;
+            border-radius: 20px;
+            background: rgba(26, 26, 26, 0.3);
+            padding: 30px 0;
+        }
+        
+        .food-carousel {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+        
+        .food-slide {
+            flex: 0 0 33.333%; /* Show 3 items at a time */
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+        
+        .food-item {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(245, 160, 69, 0.2);
+            height: 380px;
+            position: relative;
+        }
+        
+        /* Food image takes full border space */
+        .food-img {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .food-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Show full image without cropping */
+            object-position: center;
+            transition: transform 0.8s ease;
+            padding: 10px; /* Add some padding so image doesn't touch edges */
+            background: rgba(0, 0, 0, 0.2); /* Light background for better contrast */
+        }
+        
+        /* Info overlay that appears on hover */
+        .food-info-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .food-item:hover .food-info-overlay {
+            transform: translateY(0);
+        }
+        
+        .food-name {
+            font-size: 1.3rem;
+            color: var(--fire-orange);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .food-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: var(--gold);
+            font-size: 1.5rem;
+            display: block;
+        }
+        
+        .food-desc {
+            color: var(--warm-light);
+            font-size: 0.9rem;
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+        
+        /* Always visible info badge */
+        .food-info-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            padding: 8px 15px;
+            border-radius: 20px;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            opacity: 0.9;
+        }
+        
+        /* Carousel navigation dots */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(243, 231, 198, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .carousel-dot.active {
+            background: var(--gradient-fire);
+            transform: scale(1.2);
+        }
+        
+        .carousel-dot:hover {
+            background: var(--gold);
+            transform: scale(1.1);
+        }
+        
+        /* Carousel navigation arrows */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            border: 1px solid rgba(224, 193, 90, 0.3);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .carousel-nav:hover {
+            background: rgba(224, 193, 90, 0.2);
+            color: var(--fire-orange);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-prev {
+            left: 0;
+        }
+        
+        .carousel-next {
+            right: 0;
+        }
+        
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background-color: var(--dark-bg);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(224, 193, 90, 0.2);
+            position: relative;
+        }
+        
+        .main-footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L0,100 Z" fill="rgba(224,193,90,0.03)"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.5;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-column h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-fire);
+            border-radius: 3px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+            color: var(--warm-light);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.2rem;
+        }
+        
+        .social-icon:hover {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(245, 160, 69, 0.3);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--warm-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 8px;
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        
+        .contact-info i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(243, 231, 198, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ===== IMAGE FIXES ===== */
+        .event-image:empty,
+        .food-img:empty {
+            background: linear-gradient(45deg, var(--charcoal), var(--card-bg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .event-image:empty:after {
+            content: 'Event Image';
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        .food-img:empty:after {
+            content: 'Food Image';
+            color: var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .hero h1 .main-title {
+                font-size: 4rem;
+            }
+            
+            .hero h1 .subtitle {
+                font-size: 3.5rem;
+            }
+            
+            .food-slide {
+                flex: 0 0 50%; /* Show 2 items at a time on tablet */
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 .main-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero h1 .subtitle {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .event-card {
+                flex-direction: column;
+            }
+            
+            .event-image, .event-details {
+                min-width: 100%;
+            }
+            
+            .event-image {
+                min-height: 350px;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .package-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .package-card {
+                max-width: 100%;
+                height: auto;
+                min-height: 600px;
+            }
+            
+            .food-carousel-container {
+                padding: 0 40px;
+            }
+            
+            .food-item {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                flex-direction: column;
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(20px);
+                text-align: left;
+                transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                padding: 100px 30px 30px;
+                z-index: 999;
+                border-right: 1px solid rgba(224, 193, 90, 0.2);
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 20px 0;
+            }
+            
+            .nav-menu a {
+                font-size: 1.2rem;
+                padding: 12px 0;
+                display: block;
+            }
+            
+            .hero {
+                padding-top: 70px;
+            }
+            
+            .hero h1 .main-title {
+                font-size: 2.8rem;
+                margin-bottom: 15px;
+                line-height: 1.2;
+            }
+            
+            .hero h1 .subtitle {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero h1 .subtitle:after {
+                width: 150px;
+                bottom: -8px;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+                padding: 0 20px;
+                margin: 0 auto 40px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 0 20px;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 10px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .food-carousel-container {
+                padding: 0 30px;
+            }
+            
+            .food-slide {
+                flex: 0 0 100%; /* Show 1 item at a time on mobile */
+            }
+            
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .event-image {
+                min-height: 300px;
+            }
+            
+            .food-item {
+                height: 320px;
+            }
+            
+            .package-card {
+                min-height: 550px;
+            }
+            
+            .food-info-badge {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+                top: 10px;
+                right: 10px;
+            }
+            
+            .food-info-overlay {
+                padding: 15px;
+            }
+            
+            .food-name {
+                font-size: 1.1rem;
+            }
+            
+            .food-price {
+                font-size: 1.3rem;
+            }
+            
+            .hero {
+                background-attachment: scroll;
+            }
+            
+            /* Adjust animation distances for mobile */
+            .fade-in-left {
+                transform: translateX(-30px);
+            }
+            
+            .fade-in-right {
+                transform: translateX(30px);
+            }
+            
+            .fade-in-up {
+                transform: translateY(30px);
+            }
+            
+            .fade-in-down {
+                transform: translateY(-30px);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .hero {
+                height: 90vh;
+                min-height: 600px;
+            }
+            
+            .hero h1 .main-title {
+                font-size: 2.3rem;
+                margin-bottom: 12px;
+            }
+            
+            .hero h1 .subtitle {
+                font-size: 2rem;
+            }
+            
+            .hero h1 .subtitle:after {
+                width: 120px;
+                height: 2px;
+                bottom: -5px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .event-details {
+                padding: 35px;
+            }
+            
+            .package-header, .package-details {
+                padding: 25px;
+            }
+            
+            .announcement-card {
+                padding: 40px 25px;
+            }
+            
+            .food-carousel-container {
+                padding: 0 20px;
+            }
+            
+            .food-item {
+                height: 300px;
+            }
+            
+            .event-image {
+                min-height: 250px;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 15px;
+                margin: 0 auto 30px;
+            }
+            
+            .hero-buttons .btn {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+            
+            .nav-menu {
+                width: 100%;
+                max-width: 100%;
+                padding: 100px 20px 30px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .hero h1 .main-title {
+                font-size: 2rem;
+            }
+            
+            .hero h1 .subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">Z</div>
+                    <span class="logo-text">Zodwana 2.0 <span class="logo-subtext">Pub & Grill</span></span>
+                </a>
+                
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="menu.html">Menu & Packages</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in-down">
+                <h1>
+                    <span class="main-title">Zodwana 2.0 Pub & Grill</span>
+                    <span class="subtitle">Home of Good Vibes & Good Music</span>
+                </h1>
+                <p class="fade-in delay-100">Mmametlhake's premier nightlife destination. Experience premium drinks, authentic South African street food, and unforgettable events in an urban lounge atmosphere.</p>
+                <div class="hero-buttons">
+                    <a href="events.html" class="btn btn-primary fade-in-left delay-200">View Upcoming Events</a>
+                    <a href="menu.html" class="btn btn-secondary fade-in-right delay-300">Explore Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Event Section -->
+    <section class="upcoming-event">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Christmas Eve Celebration</h2>
+                <p class="title-subtext">The biggest party of the year - December 25, 2025</p>
+            </div>
+            
+            <div class="event-card fade-in">
+                <div class="event-image">
+                    <div class="poster-coming-soon">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h3>Event Poster Coming Soon</h3>
+                        <p>Stay tuned for our amazing Christmas Eve celebration!<br>The poster will be revealed closer to the event date.</p>
+                    </div>
+                </div>
+                <div class="event-details">
+                    <h3>Christmas Mega Party</h3>
+                    <div class="event-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Wednesday, 25 December 2025 | 6:00 PM - 6:00 AM</span>
+                    </div>
+                    <p>Ring in Christmas with the biggest celebration Mmametlhake has ever seen! Featuring DJs, live performances, Christmas-themed street food, and fireworks at midnight. Dress code: Festive & Fabulous!</p>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <div style="background: rgba(224, 193, 90, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(224, 193, 90, 0.3);">
+                            <i class="fas fa-gift" style="color: var(--gold); margin-right: 10px;"></i>
+                            <span style="color: var(--gold); font-weight: 600;">Free Entrance All Night!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section with iOS Icons -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>What We Offer</h2>
+                <p class="title-subtext">Premium experience with authentic South African vibes</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in-left delay-100">
+                    <div class="ios-icon">
+                        <i class="fas fa-calendar-star"></i>
+                    </div>
+                    <h3>Special Events</h3>
+                    <p>We host exclusive events occasionally with top DJs, live performances, and unique themes that make every occasion unforgettable.</p>
+                </div>
+                
+                <div class="feature-card fade-in-up delay-200">
+                    <div class="ios-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Authentic Street Food</h3>
+                    <p>Experience the best of South African cuisine - from Kotato braai platters, made fresh with traditional recipes.</p>
+                </div>
+                
+                <div class="feature-card fade-in-right delay-300">
+                    <div class="ios-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Premium Bar</h3>
+                    <p>Curated selection of local and international spirits, craft cocktails, and exclusive bottle service for special events.</p>
+                </div>
+                
+                <div class="feature-card fade-in-left delay-400">
+                    <div class="ios-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Live Entertainment</h3>
+                    <p>Featuring the best local DJs and occasional live bands across genres from Amapiano to Afrohouse during our events.</p>
+                </div>
+                
+                <div class="feature-card fade-in-up delay-500">
+                    <div class="ios-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>VIP Experience</h3>
+                    <p>Reserved tables, bottle service, and personalized attention for those seeking an exclusive experience during events.</p>
+                </div>
+                
+                <div class="feature-card fade-in-right delay-600">
+                    <div class="ios-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Prime Location</h3>
+                    <p>Centrally located in Mmametlhake with ample parking and easy access from surrounding areas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section class="announcements">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Announcements</h2>
+                <p class="title-subtext">Latest updates and important information</p>
+            </div>
+            
+            <div class="announcement-card fade-in">
+                <div class="announcement-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>No Announcements at This Time</h3>
+                    <p>Check back soon for updates on upcoming events, special offers, and important news from Zodwana 2.0 Pub & Grill. Follow us on social media to stay updated!</p>
+                <div class="social-icons" style="justify-content: center;">
+                    <a href="#" class="social-icon fade-in-left delay-100"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon fade-in-up delay-200"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon fade-in-right delay-300"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottle Packages Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Event Bottle Packages</h2>
+                <p class="title-subtext">Exclusive bottle service available during special events only</p>
+            </div>
+            
+            <div class="package-cards">
+                <div class="package-card fade-in-left delay-100">
+                    <div class="package-header">
+                        <h3 class="package-name">Bronze Package</h3>
+                        <div class="package-price">R899<span>/event</span></div>
+                    </div>
+                    <div class="package-details">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 2x Johnnie Walker Black Label</li>
+                            <li><i class="fas fa-check"></i> 4x Mixers of Choice</li>
+                            <li><i class="fas fa-check"></i> Ice Bucket & Glasses</li>
+                            <li><i class="fas fa-check"></i> Reserved Table for 4</li>
+                            <li><i class="fas fa-check"></i> Complimentary Street Food Platter</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-secondary">Enquire Now</a>
+                    </div>
+                </div>
+                
+                <div class="package-card fade-in-up delay-200">
+                    <div class="package-header" style="background: rgba(26, 26, 26, 0.9);">
+                        <h3 class="package-name">Gold Package</h3>
+                        <div class="package-price">R1,699<span>/event</span></div>
+                    </div>
+                    <div class="package-details">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 1x Hennessy VSOP</li>
+                            <li><i class="fas fa-check"></i> 1x Jameson Whiskey</li>
+                            <li><i class="fas fa-check"></i> 6x Mixers of Choice</li>
+                            <li><i class="fas fa-check"></i> Premium Table with VIP Service</li>
+                            <li><i class="fas fa-check"></i> Exclusive Food Pairing Menu</li>
+                            <li><i class="fas fa-check"></i> Sparkler Presentation</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary">Enquire Now</a>
+                    </div>
+                </div>
+                
+                <div class="package-card fade-in-right delay-300">
+                    <div class="package-header">
+                        <h3 class="package-name">Platinum Package</h3>
+                        <div class="package-price">R2,499<span>/event</span></div>
+                    </div>
+                    <div class="package-details">
+                        <ul>
+                            <li><i class="fas fa-check"></i> 2x Remy Martin VSOP</li>
+                            <li><i class="fas fa-check"></i> 1x Belvedere Vodka</li>
+                            <li><i class="fas fa-check"></i> Unlimited Mixers</li>
+                            <li><i class="fas fa-check"></i> Exclusive VIP Lounge Access</li>
+                            <li><i class="fas fa-check"></i> Dedicated Waitress Service</li>
+                            <li><i class="fas fa-check"></i> Premium Street Food Feast</li>
+                            <li><i class="fas fa-check"></i> Bottle Train Presentation</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-secondary">Enquire Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="package-note fade-in delay-400">
+                <p><i class="fas fa-info-circle" style="margin-right: 8px;"></i> Note: Bottle packages are only available during special events. Regular bar service available at all times.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Street Food Section - Manual Carousel Only -->
+    <section class="street-food">
+        <div class="container">
+            <div class="section-title fade-in-up">
+                <h2>Authentic South African Street Food</h2>
+                <p class="title-subtext">Available daily - Taste the flavors of Mzansi</p>
+            </div>
+            
+            <div class="food-carousel-container fade-in">
+                <div class="carousel-nav carousel-prev" id="carouselPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                
+                <div class="food-carousel-wrapper">
+                    <div class="food-carousel" id="foodCarousel">
+                        <!-- Slide 1 -->
+                        <div class="food-slide">
+                            <div class="food-item">
+                                <div class="food-img">
+                                    <div class="food-info-badge">R65</div>
+                                    <img src="images/bunny-chow.jpg" alt="Bunny Chow">
+                                </div>
+                                <div class="food-info-overlay">
+                                    <h3 class="food-name">Bunny Chow</h3>
+                                    <span class="food-price">R65</span>
+                                    <p class="food-desc">A Durban classic - curry served in a hollowed-out loaf of bread.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2 -->
+                        <div class="food-slide">
+                            <div class="food-item">
+                                <div class="food-img">
+                                    <div class="food-info-badge">R55</div>
+                                    <img src="images/kota-burger.jpg" alt="Kota">
+                                </div>
+                                <div class="food-info-overlay">
+                                    <h3 class="food-name">Kota </h3>
+                                    <span class="food-price">R20-R55</span>
+                                    <p class="food-desc">Quarter loaf filled with chips, Russian, cheese, polony & atchar.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 3 -->
+                        <div class="food-slide">
+                            <div class="food-item">
+                                <div class="food-img">
+                                    <div class="food-info-badge">R45</div>
+                                    <img src="images/boerewors-roll.jpg" alt="Boerewors Roll">
+                                </div>
+                                <div class="food-info-overlay">
+                                    <h3 class="food-name">Boerewors Roll</h3>
+                                    <span class="food-price">R45</span>
+                                    <p class="food-desc">Traditional sausage in fresh roll with fried onions & sauces.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 4 -->
+                        <div class="food-slide">
+                            <div class="food-item">
+                                <div class="food-img">
+                                    <div class="food-info-badge">R40</div>
+                                    <img src="images/vetkoek.jpg" alt="Vetkoek">
+                                </div>
+                                <div class="food-info-overlay">
+                                    <h3 class="food-name">Vetkoek with Mince</h3>
+                                    <span class="food-price">R40</span>
+                                    <p class="food-desc">Deep-fried dough bread filled with savory mince.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 5 -->
+                        <div class="food-slide">
+                            <div class="food-item">
+                                <div class="food-img">
+                                    <div class="food-info-badge">R120</div>
+                                    <img src="images/chakalaka-platter.jpg" alt="Chakalaka Platter">
+                                </div>
+                                <div class="food-info-overlay">
+                                    <h3 class="food-name">Chakalaka Platter</h3>
+                                    <span class="food-price">R120</span>
+                                    <p class="food-desc">Spicy relish with pap, braai meat & bread. Serves 2-3.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 6 -->
+                        <div class="food-slide">
+                            <div class="food-item">
+                                <div class="food-img">
+                                    <div class="food-info-badge">R180</div>
+                                    <img src="images/braai-platter.jpg" alt="Braai Platter">
+                                </div>
+                                <div class="food-info-overlay">
+                                    <h3 class="food-name">Braai Platter for 2</h3>
+                                    <span class="food-price">R180</span>
+                                    <p class="food-desc">Mixed grill with boerewors, chops, wings, pap & chakalaka.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-nav carousel-next" id="carouselNext">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                
+                <!-- Dots indicator -->
+                <div class="carousel-dots" id="carouselDots">
+                    <!-- Dots will be generated by JavaScript -->
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="menu.html" class="btn btn-primary fade-in delay-300">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column fade-in-left">
+                    <div class="footer-logo">
+                        <div class="logo-icon">Z</div>
+                        <span class="logo-text">Zodwana 2.0 <span class="logo-subtext">Pub & Grill</span></span>
+                    </div>
+                    <p class="footer-about">Mmametlhake's premier destination, offering premium drinks, authentic South African street food, and unforgettable events in an urban lounge atmosphere.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon fade-in delay-100"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon fade-in delay-200"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon fade-in delay-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon fade-in delay-400"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column fade-in-up delay-100">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="menu.html">Menu & Packages</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-column fade-in-right delay-200">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Main Road, Mmametlhake<br>Mpumalanga, South Africa</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+27 12 345 6789</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@zodwanapub.co.za</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Mon-Fri: 8am - 6pm<br>Sat-Sun: 9am - 10pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright fade-in-up delay-300">
+                <p>&copy; 2025 Zodwana 2.0 Pub & Grill. All Rights Reserved. | Created by Monarch Technologies</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize all functionality when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initFunctionality();
+        });
+        
+        function initFunctionality() {
+            // ===== MOBILE NAVIGATION =====
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle('active');
+                    navToggle.classList.toggle('active');
+                    
+                    // Toggle body scroll when menu is open
+                    if (navMenu.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+                
+                // Close menu when clicking on links
+                const navLinks = navMenu.querySelectorAll('a');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (navMenu.classList.contains('active') && 
+                        !navMenu.contains(event.target) && 
+                        !navToggle.contains(event.target)) {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+                
+                // Close menu with Escape key
+                document.addEventListener('keydown', function(event) {
+                    if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+            
+            // ===== HEADER SCROLL EFFECT =====
+            const header = document.querySelector('.main-header');
+            
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.style.padding = '15px 0';
+                    } else {
+                        header.style.padding = '25px 0';
+                    }
+                });
+            }
+            
+            // ===== SCROLL ANIMATIONS =====
+            function checkScrollAnimations() {
+                const animatedElements = document.querySelectorAll(
+                    '.fade-in, .fade-in-up, .fade-in-down, .fade-in-left, .fade-in-right'
+                );
+                
+                animatedElements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check for animations
+            checkScrollAnimations();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScrollAnimations);
+            
+            // ===== FOOD CAROUSEL =====
+            const carousel = document.getElementById('foodCarousel');
+            const carouselPrev = document.getElementById('carouselPrev');
+            const carouselNext = document.getElementById('carouselNext');
+            const carouselDots = document.getElementById('carouselDots');
+            
+            if (carousel && carouselPrev && carouselNext) {
+                const slides = document.querySelectorAll('.food-slide');
+                const totalSlides = slides.length;
+                let currentSlide = 0;
+                let slideWidth = 100 / 3; // Show 3 slides at a time
+                
+                // Adjust slide width based on screen size
+                function updateSlideWidth() {
+                    if (window.innerWidth <= 1200 && window.innerWidth > 768) {
+                        slideWidth = 100 / 2; // 2 slides on tablet
+                    } else if (window.innerWidth <= 768) {
+                        slideWidth = 100; // 1 slide on mobile
+                    } else {
+                        slideWidth = 100 / 3; // 3 slides on desktop
+                    }
+                }
+                
+                // Create dots
+                function createDots() {
+                    carouselDots.innerHTML = '';
+                    const dotsCount = Math.ceil(totalSlides / (window.innerWidth <= 768 ? 1 : window.innerWidth <= 1200 ? 2 : 3));
+                    
+                    for (let i = 0; i < dotsCount; i++) {
+                        const dot = document.createElement('button');
+                        dot.className = 'carousel-dot';
+                        if (i === 0) dot.classList.add('active');
+                        dot.addEventListener('click', () => {
+                            goToSlide(i);
+                        });
+                        carouselDots.appendChild(dot);
+                    }
+                }
+                
+                // Update dots
+                function updateDots() {
+                    const dots = document.querySelectorAll('.carousel-dot');
+                    const activeDotIndex = Math.floor(currentSlide / (window.innerWidth <= 768 ? 1 : window.innerWidth <= 1200 ? 2 : 3));
+                    
+                    dots.forEach((dot, index) => {
+                        dot.classList.remove('active');
+                        if (index === activeDotIndex) {
+                            dot.classList.add('active');
+                        }
+                    });
+                }
+                
+                // Go to specific slide
+                function goToSlide(slideIndex) {
+                    currentSlide = slideIndex * (window.innerWidth <= 768 ? 1 : window.innerWidth <= 1200 ? 2 : 3);
+                    if (currentSlide >= totalSlides) currentSlide = 0;
+                    if (currentSlide < 0) currentSlide = totalSlides - 1;
+                    
+                    updateCarousel();
+                    updateDots();
+                }
+                
+                // Update carousel position
+                function updateCarousel() {
+                    carousel.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+                }
+                
+                // Next slide
+                function nextSlide() {
+                    currentSlide++;
+                    if (currentSlide >= totalSlides) {
+                        currentSlide = 0;
+                    }
+                    updateCarousel();
+                    updateDots();
+                }
+                
+                // Previous slide
+                function prevSlide() {
+                    currentSlide--;
+                    if (currentSlide < 0) {
+                        currentSlide = totalSlides - 1;
+                    }
+                    updateCarousel();
+                    updateDots();
+                }
+                
+                // Initialize immediately
+                updateSlideWidth();
+                createDots();
+                updateCarousel();
+                
+                // Event listeners for manual navigation
+                carouselPrev.addEventListener('click', prevSlide);
+                carouselNext.addEventListener('click', nextSlide);
+                
+                // Update on window resize
+                window.addEventListener('resize', () => {
+                    updateSlideWidth();
+                    createDots();
+                    updateCarousel();
+                    updateDots();
+                });
+                
+                // Touch/swipe support for mobile
+                let touchStartX = 0;
+                let touchEndX = 0;
+                
+                carousel.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+                
+                carousel.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                });
+                
+                function handleSwipe() {
+                    const swipeThreshold = 50;
+                    
+                    if (touchStartX - touchEndX > swipeThreshold) {
+                        // Swipe left - next slide
+                        nextSlide();
+                    } else if (touchEndX - touchStartX > swipeThreshold) {
+                        // Swipe right - previous slide
+                        prevSlide();
+                    }
+                }
+            }
+            
+            // ===== ADD HOVER EFFECTS =====
+            const featureCards = document.querySelectorAll('.feature-card');
+            const packageCards = document.querySelectorAll('.package-card');
+            
+            featureCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+            
+            packageCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-15px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+    </script>
+</body>
+</html>

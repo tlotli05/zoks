@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Zodwana Pub & Grill - Past Events & Memories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== CSS RESET & BASE ===== */
+        :root {
+            --charcoal: #2A2A2A;
+            --gold: #E0C15A;
+            --fire-orange: #F5A045;
+            --warm-light: #F3E7C6;
+            --white: #FFFFFF;
+            --dark-bg: #1A1A1A;
+            --card-bg: #333333;
+            --gradient-gold: linear-gradient(135deg, var(--gold), #FFD166);
+            --gradient-fire: linear-gradient(135deg, var(--fire-orange), #FF9E5E);
+            --gradient-charcoal: linear-gradient(135deg, var(--charcoal), #1E1E1E);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--charcoal);
+            color: var(--warm-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .section-title.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            display: inline-block;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-fire);
+            border-radius: 2px;
+        }
+        
+        .title-subtext {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            margin-top: 15px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 38px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            box-shadow: 0 8px 25px rgba(245, 160, 69, 0.3);
+        }
+        
+        .btn-primary:hover {
+            color: var(--charcoal);
+            box-shadow: 0 15px 35px rgba(245, 160, 69, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover:after {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(224, 193, 90, 0.1);
+            box-shadow: 0 10px 25px rgba(224, 193, 90, 0.2);
+            transform: translateY(-3px);
+            border-color: var(--fire-orange);
+            color: var(--fire-orange);
+        }
+        
+        /* ===== LOADING ANIMATION ===== */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-charcoal);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .loading-logo {
+            text-align: center;
+            opacity: 0;
+            animation: fadeInLogo 1.2s ease forwards 0.3s;
+        }
+        
+        .loading-logo .logo-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2.5rem;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 30px rgba(224, 193, 90, 0.7);
+            animation: pulse 2s infinite ease-in-out;
+        }
+        
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(243, 231, 198, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 20px auto 0;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            width: 0%;
+            background: var(--gradient-fire);
+            border-radius: 2px;
+            animation: loading 2s ease-in-out forwards;
+        }
+        
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        @keyframes fadeInLogo {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(224, 193, 90, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(224, 193, 90, 0.9); }
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background-color: rgba(26, 26, 26, 0);
+            backdrop-filter: blur(0px);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-bottom: 1px solid transparent;
+        }
+        
+        .main-header.scrolled {
+            padding: 15px 0;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(224, 193, 90, 0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--gold);
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        
+        .logo.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            margin-right: 12px;
+            box-shadow: 0 0 15px rgba(224, 193, 90, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(15deg);
+            box-shadow: 0 0 25px rgba(224, 193, 90, 0.7);
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtext {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--warm-light);
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        .nav-menu.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .nav-menu li {
+            margin-left: 35px;
+            position: relative;
+        }
+        
+        .nav-menu a {
+            color: var(--warm-light);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-fire);
+            transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-menu a.active {
+            color: var(--gold);
+        }
+        
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+        
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nav-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 3px 0;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+        
+        .nav-toggle.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .nav-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .nav-toggle.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)), url('images/gallery-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: 80px;
+        }
+        
+        .page-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(224, 193, 90, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(245, 160, 69, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(243, 231, 198, 0.05) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .page-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .page-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.8s;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        
+        .page-hero h1 span {
+            color: var(--gold);
+            display: block;
+            font-size: 3.5rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-top: 10px;
+            position: relative;
+        }
+        
+        .page-hero h1 span:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: var(--gradient-fire);
+            border-radius: 3px;
+        }
+        
+        .page-hero p {
+            font-size: 1.3rem;
+            max-width: 750px;
+            margin: 0 auto 40px;
+            color: var(--warm-light);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 1s;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* ===== GALLERY SECTION ===== */
+        .gallery-section {
+            background-color: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(224, 193, 90, 0.05) 0%, transparent 50%);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 280px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(224, 193, 90, 0.1);
+            background: var(--gradient-charcoal);
+        }
+        
+        .gallery-item.animate-in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(224, 193, 90, 0.3);
+            z-index: 10;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.15);
+        }
+        
+        /* ===== GALLERY MODAL ===== */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            padding: 40px 20px;
+            overflow-y: auto;
+            animation: fadeInModal 0.4s ease;
+        }
+        
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(224, 193, 90, 0.3);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+            animation: slideUpModal 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        @keyframes slideUpModal {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            color: var(--gold);
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(224, 193, 90, 0.3);
+        }
+        
+        .modal-close:hover {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            transform: rotate(90deg);
+        }
+        
+        .modal-image-container {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 500px;
+        }
+        
+        .modal-image-container img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: contain;
+            background: #000;
+        }
+        
+        .modal-navigation {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 25px;
+            pointer-events: none;
+        }
+        
+        .modal-nav {
+            width: 50px;
+            height: 50px;
+            background: rgba(26, 26, 26, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: 1px solid rgba(224, 193, 90, 0.3);
+            transition: all 0.3s ease;
+            pointer-events: all;
+        }
+        
+        .modal-nav:hover {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            transform: scale(1.1);
+        }
+        
+        .load-more-container {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background-color: var(--dark-bg);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(224, 193, 90, 0.2);
+            position: relative;
+        }
+        
+        .main-footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L0,100 Z" fill="rgba(224,193,90,0.03)"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.5;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .footer-column.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .footer-column h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-fire);
+            border-radius: 3px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+            color: var(--warm-light);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.2rem;
+        }
+        
+        .social-icon:hover {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(245, 160, 69, 0.3);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--warm-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 8px;
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        
+        .contact-info i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(243, 231, 198, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .page-hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .page-hero h1 span {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .page-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .page-hero h1 span {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .modal-image-container {
+                flex-direction: column;
+            }
+            
+            .modal-image-container img {
+                min-width: 100%;
+                max-height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(20px);
+                text-align: center;
+                transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                padding: 30px 0;
+                z-index: 999;
+                border-top: 1px solid rgba(224, 193, 90, 0.2);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .page-hero {
+                height: 60vh;
+                margin-top: 70px;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .page-hero h1 span {
+                font-size: 2.2rem;
+            }
+            
+            .page-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .gallery-item {
+                height: 230px;
+            }
+            
+            .modal-navigation {
+                padding: 0 15px;
+            }
+            
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .page-hero h1 span {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 280px;
+            }
+            
+            .modal-content {
+                border-radius: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-logo">
+            <div class="logo-icon">Z</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">Z</div>
+                    <span class="logo-text">Zodwana <span class="logo-subtext">Pub & Grill</span></span>
+                </a>
+                
+                <div class="nav-toggle" id="navToggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="menu.html">Menu & Packages</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Events Gallery</h1>
+                <h1><span>Memories That Last Forever</span></h1>
+                <p>Relive the best nights at Zodwana Pub & Grill. Browse through our collection of unforgettable moments, premium events, and celebrations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+                <p class="title-subtext">20+ photos from our most memorable nights</p>
+            </div>
+            
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be loaded here by JavaScript -->
+            </div>
+            
+            <div class="load-more-container">
+                <button class="btn btn-secondary" id="loadMoreBtn">Load More Photos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div class="modal-image-container">
+                <img id="modalImage" src="" alt="Gallery Image">
+            </div>
+            <div class="modal-navigation">
+                <button class="modal-nav prev" id="modalPrev"><i class="fas fa-chevron-left"></i></button>
+                <button class="modal-nav next" id="modalNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="logo-icon">Z</div>
+                        <span class="logo-text">Zodwana <span class="logo-subtext">Pub & Grill</span></span>
+                    </div>
+                    <p class="footer-about">Mmametlhake's premier nightlife destination, offering premium drinks, authentic South African street food, and unforgettable events in an urban lounge atmosphere.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="menu.html">Menu & Packages</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Main Road, Mmametlhake<br>Mpumalanga, South Africa</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+27 12 345 6789</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@zodwanapub.co.za</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Wed-Fri: 4PM - 2AM<br>Sat-Sun: 12PM - 2AM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Zodwana Pub & Grill. All Rights Reserved. | Designed for Mmametlhake's Nightlife</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gallery Data - Your images in the images folder (no subfolders)
+        const galleryData = [
+            { id: 1, image: "images/gallery1.jpg" },
+            { id: 2, image: "images/gallery2.jpg" },
+            { id: 3, image: "images/gallery3.jpg" },
+            { id: 4, image: "images/gallery4.jpg" },
+            { id: 5, image: "images/gallery5.jpg" },
+            { id: 6, image: "images/gallery6.jpg" },
+            { id: 7, image: "images/gallery7.jpg" },
+            { id: 8, image: "images/gallery8.jpg" },
+            { id: 9, image: "images/gallery9.jpg" },
+            { id: 10, image: "images/gallery10.jpg" },
+            { id: 11, image: "images/gallery11.jpg" },
+            { id: 12, image: "images/gallery12.jpg" },
+            { id: 13, image: "images/gallery13.jpg" },
+            { id: 14, image: "images/gallery14.jpg" },
+            { id: 15, image: "images/gallery15.jpg" },
+            { id: 16, image: "images/gallery16.jpg" },
+            { id: 17, image: "images/gallery17.jpg" },
+            { id: 18, image: "images/gallery18.jpg" },
+            { id: 19, image: "images/gallery19.jpg" },
+            { id: 20, image: "images/gallery20.jpg" }
+        ];
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            
+            setTimeout(() => {
+                loadingOverlay.style.opacity = '0';
+                loadingOverlay.style.visibility = 'hidden';
+                
+                initGallery();
+            }, 1200);
+        });
+        
+        // Initialize Gallery
+        function initGallery() {
+            // Animate logo and navigation
+            const logo = document.querySelector('.logo');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            logo.classList.add('animate-in');
+            navMenu.classList.add('animate-in');
+            
+            // Mobile Navigation Toggle
+            const navToggle = document.getElementById('navToggle');
+            const navMenuElement = document.getElementById('navMenu');
+            
+            navToggle.addEventListener('click', () => {
+                navMenuElement.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenuElement.classList.remove('active');
+                    navToggle.classList.remove('active');
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('.main-header');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Initialize gallery with first 12 items
+            let displayedItems = 12;
+            renderGallery(displayedItems);
+            
+            // Load More button
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            loadMoreBtn.addEventListener('click', () => {
+                displayedItems += 8;
+                renderGallery(displayedItems);
+                
+                // Hide button if all items are displayed
+                if (displayedItems >= galleryData.length) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            });
+            
+            // Modal functionality
+            const modal = document.getElementById('galleryModal');
+            const modalClose = document.getElementById('modalClose');
+            const modalImage = document.getElementById('modalImage');
+            const modalPrev = document.getElementById('modalPrev');
+            const modalNext = document.getElementById('modalNext');
+            
+            let currentModalIndex = 0;
+            
+            // Open modal when gallery item is clicked
+            document.addEventListener('click', (e) => {
+                const galleryItem = e.target.closest('.gallery-item');
+                if (galleryItem) {
+                    const itemId = parseInt(galleryItem.getAttribute('data-id'));
+                    openModal(itemId);
+                }
+            });
+            
+            // Close modal
+            modalClose.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Modal navigation
+            modalPrev.addEventListener('click', () => {
+                navigateModal(-1);
+            });
+            
+            modalNext.addEventListener('click', () => {
+                navigateModal(1);
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (modal.style.display === 'block' || modal.style.display === '') {
+                    if (e.key === 'Escape') {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    } else if (e.key === 'ArrowLeft') {
+                        navigateModal(-1);
+                    } else if (e.key === 'ArrowRight') {
+                        navigateModal(1);
+                    }
+                }
+            });
+            
+            // Scroll animations
+            function checkScrollAnimations() {
+                const sections = document.querySelectorAll('section');
+                
+                sections.forEach((section) => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight - 150) {
+                        // Animate section title
+                        const title = section.querySelector('.section-title');
+                        if (title && !title.classList.contains('animate-in')) {
+                            title.classList.add('animate-in');
+                        }
+                        
+                        // Animate gallery items
+                        const galleryItems = section.querySelectorAll('.gallery-item');
+                        galleryItems.forEach((item) => {
+                            if (!item.classList.contains('animate-in')) {
+                                item.classList.add('animate-in');
+                            }
+                        });
+                        
+                        // Animate footer columns
+                        const footerColumns = section.querySelectorAll('.footer-column');
+                        footerColumns.forEach((column) => {
+                            if (!column.classList.contains('animate-in')) {
+                                column.classList.add('animate-in');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // Initial check and scroll event listener
+            window.addEventListener('scroll', checkScrollAnimations);
+            checkScrollAnimations();
+        }
+        
+        // Render gallery items
+        function renderGallery(count) {
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = '';
+            
+            // Limit to count
+            const itemsToShow = galleryData.slice(0, count);
+            
+            // Update Load More button visibility
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            if (count >= galleryData.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'inline-block';
+            }
+            
+            // Render items
+            itemsToShow.forEach(item => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.setAttribute('data-id', item.id);
+                
+                galleryItem.innerHTML = `
+                    <img src="${item.image}" alt="Gallery Image ${item.id}" class="gallery-img">
+                `;
+                
+                galleryGrid.appendChild(galleryItem);
+            });
+            
+            // Re-check animations after rendering
+            setTimeout(() => {
+                checkScrollAnimations();
+            }, 100);
+        }
+        
+        // Open modal with specific item
+        function openModal(itemId) {
+            const modal = document.getElementById('galleryModal');
+            const item = galleryData.find(i => i.id === itemId);
+            
+            if (!item) return;
+            
+            // Update modal content
+            document.getElementById('modalImage').src = item.image;
+            document.getElementById('modalImage').alt = `Gallery Image ${item.id}`;
+            
+            // Find current index
+            currentModalIndex = galleryData.findIndex(i => i.id === itemId);
+            
+            // Show modal
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Navigate modal (prev/next)
+        function navigateModal(direction) {
+            currentModalIndex += direction;
+            
+            // Loop around
+            if (currentModalIndex < 0) {
+                currentModalIndex = galleryData.length - 1;
+            } else if (currentModalIndex >= galleryData.length) {
+                currentModalIndex = 0;
+            }
+            
+            // Update modal with new item
+            const item = galleryData[currentModalIndex];
+            document.getElementById('modalImage').src = item.image;
+            document.getElementById('modalImage').alt = `Gallery Image ${item.id}`;
+        }
+    </script>
+</body>
+</html>

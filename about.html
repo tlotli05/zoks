@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Zodwana Pub & Grill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== CSS RESET & BASE ===== */
+        :root {
+            --charcoal: #2A2A2A;
+            --gold: #E0C15A;
+            --fire-orange: #F5A045;
+            --warm-light: #F3E7C6;
+            --white: #FFFFFF;
+            --dark-bg: #1A1A1A;
+            --card-bg: #333333;
+            --gradient-gold: linear-gradient(135deg, var(--gold), #FFD166);
+            --gradient-fire: linear-gradient(135deg, var(--fire-orange), #FF9E5E);
+            --gradient-charcoal: linear-gradient(135deg, var(--charcoal), #1E1E1E);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--charcoal);
+            color: var(--warm-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .section-title.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            display: inline-block;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-fire);
+            border-radius: 2px;
+        }
+        
+        .title-subtext {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            margin-top: 15px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 38px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            box-shadow: 0 8px 25px rgba(245, 160, 69, 0.3);
+        }
+        
+        .btn-primary:hover {
+            color: var(--charcoal);
+            box-shadow: 0 15px 35px rgba(245, 160, 69, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover:after {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(224, 193, 90, 0.1);
+            box-shadow: 0 10px 25px rgba(224, 193, 90, 0.2);
+            transform: translateY(-3px);
+            border-color: var(--fire-orange);
+            color: var(--fire-orange);
+        }
+        
+        /* ===== PREMIUM iOS-STYLE ICONS ===== */
+        .ios-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .ios-icon:hover {
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ios-icon i {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        /* ===== NO LOADING ANIMATION - IMMEDIATE DISPLAY ===== */
+        .loading-overlay {
+            display: none;
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(15px);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-bottom: 1px solid rgba(224, 193, 90, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--gold);
+        }
+        
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            margin-right: 12px;
+            box-shadow: 0 0 15px rgba(224, 193, 90, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .logo:hover .logo-icon {
+            transform: rotate(15deg);
+            box-shadow: 0 0 25px rgba(224, 193, 90, 0.7);
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtext {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--warm-light);
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 35px;
+            position: relative;
+        }
+        
+        .nav-menu a {
+            color: var(--warm-light);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-fire);
+            transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-menu a.active {
+            color: var(--gold);
+        }
+        
+        .nav-menu a.active:after {
+            width: 100%;
+        }
+        
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nav-toggle .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 3px 0;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+        
+        .nav-toggle.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .nav-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .nav-toggle.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        
+        /* ===== ABOUT HERO SECTION ===== */
+        .about-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)), url('images/about-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+        
+        .about-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(224, 193, 90, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(245, 160, 69, 0.15) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .about-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        
+        .about-hero h1 span {
+            color: var(--gold);
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+        
+        .about-hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--warm-light);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        /* ===== OUR STORY SECTION ===== */
+        .our-story {
+            background-color: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .our-story:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(42,42,42,0.3)"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.3;
+        }
+        
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .story-text {
+            flex: 1;
+            min-width: 300px;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        
+        .story-text.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .story-text h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .story-text h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-fire);
+            border-radius: 2px;
+        }
+        
+        .story-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--warm-light);
+        }
+        
+        .story-image {
+            flex: 1;
+            min-width: 300px;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        
+        .story-image.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .story-img-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(224, 193, 90, 0.2);
+            position: relative;
+            height: 400px; /* Fixed height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .story-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image fills container nicely */
+            display: block;
+            transition: transform 0.8s ease;
+        }
+        
+        .story-img-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* ===== OUR VISION SECTION ===== */
+        .our-vision {
+            background-color: var(--charcoal);
+            position: relative;
+        }
+        
+        .vision-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .vision-card {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .vision-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .vision-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(224, 193, 90, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .vision-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .vision-card p {
+            color: var(--warm-light);
+            opacity: 0.8;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* ===== MAMMETLHAKE CONNECTION SECTION ===== */
+        .mametlhake-connection {
+            background-color: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mametlhake-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .mametlhake-image {
+            flex: 1;
+            min-width: 300px;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        
+        .mametlhake-image.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .mametlhake-img-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(224, 193, 90, 0.2);
+            position: relative;
+            height: 400px; /* Fixed height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mametlhake-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image fills container nicely */
+            display: block;
+            transition: transform 0.8s ease;
+        }
+        
+        .mametlhake-img-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .mametlhake-text {
+            flex: 1;
+            min-width: 300px;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        
+        .mametlhake-text.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .mametlhake-text h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .mametlhake-text h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-fire);
+            border-radius: 2px;
+        }
+        
+        .mametlhake-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--warm-light);
+        }
+        
+        /* ===== VENUE FEATURES SECTION ===== */
+        .venue-features {
+            background-color: var(--charcoal);
+            position: relative;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: var(--gradient-charcoal);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .feature-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(224, 193, 90, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+        
+        .feature-card p {
+            color: var(--warm-light);
+            opacity: 0.8;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* ===== VISIT US CTA SECTION ===== */
+        .visit-us {
+            background-color: var(--dark-bg);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .visit-us:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(224, 193, 90, 0.05) 0%, transparent 50%);
+        }
+        
+        .visit-content {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        
+        .visit-content.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .visit-content h2 {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .visit-content p {
+            font-size: 1.2rem;
+            color: var(--warm-light);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        /* ===== FOOTER ===== */
+        .main-footer {
+            background-color: var(--dark-bg);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(224, 193, 90, 0.2);
+            position: relative;
+        }
+        
+        .main-footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L0,100 Z" fill="rgba(224,193,90,0.03)"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.5;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-fire);
+            border-radius: 3px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .footer-about p {
+            margin-bottom: 25px;
+            color: var(--warm-light);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.2rem;
+        }
+        
+        .social-icon:hover {
+            background: var(--gradient-fire);
+            color: var(--charcoal);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(245, 160, 69, 0.3);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--warm-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 8px;
+            transform: translateX(5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        
+        .contact-info i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(243, 231, 198, 0.7);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .about-hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .story-img-container,
+            .mametlhake-img-container {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .story-content, .mametlhake-content {
+                flex-direction: column;
+            }
+            
+            .story-text, .story-image, .mametlhake-text, .mametlhake-image {
+                min-width: 100%;
+            }
+            
+            .story-img-container,
+            .mametlhake-img-container {
+                height: 400px;
+            }
+            
+            .features-grid, .vision-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(20px);
+                text-align: center;
+                transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                padding: 30px 0;
+                z-index: 999;
+                border-top: 1px solid rgba(224, 193, 90, 0.2);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .about-hero {
+                height: 50vh;
+                margin-top: 70px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-hero p {
+                font-size: 1.2rem;
+                padding: 0 15px;
+            }
+            
+            .story-text h2, .mametlhake-text h2 {
+                font-size: 2rem;
+            }
+            
+            .story-img-container,
+            .mametlhake-img-container {
+                height: 350px;
+            }
+            
+            .features-grid, .vision-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .visit-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .about-hero {
+                height: 45vh;
+            }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .story-text, .mametlhake-text {
+                padding: 0 10px;
+            }
+            
+            .story-img-container,
+            .mametlhake-img-container {
+                height: 300px;
+            }
+            
+            .feature-card, .vision-card {
+                padding: 30px 20px;
+            }
+            
+            .visit-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">Z</div>
+                    <span class="logo-text">Zodwana <span class="logo-subtext">Pub & Grill</span></span>
+                </a>
+                
+                <div class="nav-toggle" id="navToggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="menu.html">Menu & Packages</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-content">
+                <h1>Our <span>Story</span></h1>
+                <p>From a local gathering spot to Mmametlhake's premier nightlife destination, discover the journey of Zodwana Pub & Grill.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="our-story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <h2>From Humble Beginnings</h2>
+                    <p>Zodwana Pub & Grill started as a small local spot in Mmametlhake, Mpumalanga, with a simple vision: to create a space where the community could gather, enjoy good food, and experience authentic South African hospitality.</p>
+                    <p>What began as a modest establishment has grown into the premier nightlife destination in the region, known for its electric atmosphere, premium offerings, and unforgettable events.</p>
+                    <p>The name "Zodwana 2.0" represents our evolution - maintaining our roots while embracing modern nightlife culture, creating a unique fusion of traditional South African warmth with contemporary urban energy.</p>
+                    <p>Today, we're more than just a pub - we're a cultural hub where memories are made, friendships are forged, and the spirit of Mmametlhake comes alive every night.</p>
+                </div>
+                <div class="story-image">
+                    <div class="story-img-container">
+                        <img src="images/zodwana-story.jpg" alt="Zodwana Pub & Grill Story">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Vision Section -->
+    <section class="our-vision">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Vision & Values</h2>
+                <p class="title-subtext">What drives us to create unforgettable experiences</p>
+            </div>
+            
+            <div class="vision-cards">
+                <div class="vision-card">
+                    <div class="ios-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Authentic Experience</h3>
+                    <p>We believe in keeping it real - from our traditional street food recipes to our local music selection, every element is authentically South African.</p>
+                </div>
+                
+                <div class="vision-card">
+                    <div class="ios-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community First</h3>
+                    <p>Zodwana is built by the community, for the community. We prioritize local talent, suppliers, and creating opportunities for Mmametlhake residents.</p>
+                </div>
+                
+                <div class="vision-card">
+                    <div class="ios-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>While we keep our roots authentic, we never compromise on quality. From our drinks selection to our ingredients, only the best will do.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mmametlhake Connection Section -->
+    <section class="mametlhake-connection">
+        <div class="container">
+            <div class="mametlhake-content">
+                <div class="mametlhake-image">
+                    <div class="mametlhake-img-container">
+                        <img src="images/mametlhake-community.jpg" alt="Mmametlhake Community Connection">
+                    </div>
+                </div>
+                <div class="mametlhake-text">
+                    <h2>Rooted in Mmametlhake</h2>
+                    <p>Our connection to Mmametlhake runs deep. We're not just located here - we're part of the community's fabric, contributing to local economy and culture.</p>
+                    <p>We source our ingredients locally whenever possible, support local musicians and DJs, and create employment opportunities for community members.</p>
+                    <p>Zodwana Pub & Grill has become a landmark destination that puts Mmametlhake on the map for nightlife and entertainment in Mpumalanga.</p>
+                    <p>We take pride in showcasing the best of what our community has to offer, creating a space that locals are proud to call their own.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Features Section -->
+    <section class="venue-features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Venue Features</h2>
+                <p class="title-subtext">Designed for maximum enjoyment and comfort</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="ios-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Premium Sound System</h3>
+                    <p>State-of-the-art audio equipment ensuring crystal clear sound quality for both music and events.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="ios-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Modern Kitchen</h3>
+                    <p>Fully equipped kitchen preparing authentic South African street food with fresh, quality ingredients.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="ios-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3>Comfortable Lounge</h3>
+                    <p>Premium seating areas designed for relaxation and socializing in a sophisticated atmosphere.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="ios-icon">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3>Ample Parking</h3>
+                    <p>Secure, well-lit parking area with ample space for guests, ensuring convenience and safety.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="ios-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Premium Bar</h3>
+                    <p>Extensive selection of local and international spirits, beers, and Cognacs.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="ios-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Dynamic Lighting</h3>
+                    <p>Professional lighting system that creates the perfect atmosphere for any occasion or event.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Us Section -->
+    <section class="visit-us">
+        <div class="container">
+            <div class="visit-content">
+                <h2>Experience Zodwana</h2>
+                <p>Come visit us and experience the unique blend of authentic South African hospitality and premium nightlife that only Zodwana Pub & Grill can offer. Whether you're here for our famous street food, premium drinks, or unforgettable events, we guarantee an experience you'll want to repeat.</p>
+                <a href="contact.html" class="btn btn-primary">Find Our Location</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <div class="logo-icon">Z</div>
+                        <span class="logo-text">Zodwana <span class="logo-subtext">Pub & Grill</span></span>
+                    </div>
+                    <p class="footer-about">Mmametlhake's premier destination, offering premium drinks, authentic South African street food, and unforgettable events in an urban lounge atmosphere.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="events.html">Events</a></li>
+                            <li><a href="menu.html">Menu & Packages</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Main Road, Mmametlhake<br>Mpumalanga, South Africa</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+27 12 345 6789</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@zodwanapub.co.za</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Wed-Fri: 8am - 6am<br>Sat-Sun: 9am-8pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Zodwana Pub & Grill. All Rights Reserved. | Designed by Monarch Technologies Pty Ltd</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize all animations immediately
+        document.addEventListener('DOMContentLoaded', function() {
+            initFunctionality();
+        });
+        
+        // Initialize all functionality
+        function initFunctionality() {
+            // Mobile Navigation Toggle
+            const navToggle = document.getElementById('navToggle');
+            const navMenuElement = document.getElementById('navMenu');
+            
+            if (navToggle && navMenuElement) {
+                navToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navMenuElement.classList.toggle('active');
+                    navToggle.classList.toggle('active');
+                    
+                    const isExpanded = navToggle.classList.contains('active');
+                    navToggle.setAttribute('aria-expanded', isExpanded);
+                });
+                
+                // Close mobile menu when clicking on a link
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenuElement.classList.remove('active');
+                        navToggle.classList.remove('active');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (navMenuElement.classList.contains('active') && 
+                        !navMenuElement.contains(e.target) && 
+                        !navToggle.contains(e.target)) {
+                        navMenuElement.classList.remove('active');
+                        navToggle.classList.remove('active');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                
+                // Close menu on escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && navMenuElement.classList.contains('active')) {
+                        navMenuElement.classList.remove('active');
+                        navToggle.classList.remove('active');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('.main-header');
+                if (window.scrollY > 50) {
+                    header.style.padding = '15px 0';
+                } else {
+                    header.style.padding = '25px 0';
+                }
+            });
+            
+            // Scroll animations with staggered delays
+            function checkScrollAnimations() {
+                const sections = document.querySelectorAll('section');
+                
+                sections.forEach((section, index) => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight - 150) {
+                        // Animate section title
+                        const title = section.querySelector('.section-title');
+                        if (title && !title.classList.contains('animate-in')) {
+                            setTimeout(() => {
+                                title.classList.add('animate-in');
+                            }, index * 200);
+                        }
+                        
+                        // Animate story text and image
+                        const storyText = section.querySelector('.story-text');
+                        if (storyText && !storyText.classList.contains('animate-in')) {
+                            setTimeout(() => {
+                                storyText.classList.add('animate-in');
+                            }, index * 200 + 300);
+                        }
+                        
+                        const storyImage = section.querySelector('.story-image');
+                        if (storyImage && !storyImage.classList.contains('animate-in')) {
+                            setTimeout(() => {
+                                storyImage.classList.add('animate-in');
+                            }, index * 200 + 500);
+                        }
+                        
+                        // Animate vision cards with staggered delay
+                        const visionCards = section.querySelectorAll('.vision-card');
+                        visionCards.forEach((card, cardIndex) => {
+                            if (!card.classList.contains('animate-in')) {
+                                setTimeout(() => {
+                                    card.classList.add('animate-in');
+                                }, index * 200 + cardIndex * 200);
+                            }
+                        });
+                        
+                        // Animate mametlhake text and image
+                        const mametlhakeText = section.querySelector('.mametlhake-text');
+                        if (mametlhakeText && !mametlhakeText.classList.contains('animate-in')) {
+                            setTimeout(() => {
+                                mametlhakeText.classList.add('animate-in');
+                            }, index * 200 + 400);
+                        }
+                        
+                        const mametlhakeImage = section.querySelector('.mametlhake-image');
+                        if (mametlhakeImage && !mametlhakeImage.classList.contains('animate-in')) {
+                            setTimeout(() => {
+                                mametlhakeImage.classList.add('animate-in');
+                            }, index * 200 + 600);
+                        }
+                        
+                        // Animate feature cards with staggered delay
+                        const featureCards = section.querySelectorAll('.feature-card');
+                        featureCards.forEach((card, cardIndex) => {
+                            if (!card.classList.contains('animate-in')) {
+                                setTimeout(() => {
+                                    card.classList.add('animate-in');
+                                }, index * 200 + cardIndex * 150);
+                            }
+                        });
+                        
+                        // Animate visit content
+                        const visitContent = section.querySelector('.visit-content');
+                        if (visitContent && !visitContent.classList.contains('animate-in')) {
+                            setTimeout(() => {
+                                visitContent.classList.add('animate-in');
+                            }, index * 200 + 700);
+                        }
+                    }
+                });
+            }
+            
+            // Initial check and scroll event listener
+            window.addEventListener('scroll', checkScrollAnimations);
+            setTimeout(checkScrollAnimations, 300); // Initial check
+            
+            // Add subtle animation to iOS icons on scroll
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const iosIcons = entry.target.querySelectorAll('.ios-icon');
+                        iosIcons.forEach((icon, index) => {
+                            setTimeout(() => {
+                                icon.style.transform = 'scale(1.1)';
+                                setTimeout(() => {
+                                    icon.style.transform = 'scale(1)';
+                                }, 300);
+                            }, index * 200);
+                        });
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe sections with iOS icons
+            document.querySelectorAll('.vision-cards, .features-grid').forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Image hover effects
+            const imageContainers = document.querySelectorAll('.story-img-container, .mametlhake-img-container');
+            imageContainers.forEach(container => {
+                container.addEventListener('mouseenter', () => {
+                    const img = container.querySelector('img');
+                    img.style.transform = 'scale(1.05)';
+                });
+                
+                container.addEventListener('mouseleave', () => {
+                    const img = container.querySelector('img');
+                    img.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Add pulse animation to CTA button every 10 seconds
+            setInterval(() => {
+                const ctaButton = document.querySelector('.visit-us .btn-primary');
+                if (ctaButton) {
+                    ctaButton.style.transform = 'scale(1.05)';
+                    ctaButton.style.boxShadow = '0 15px 35px rgba(245, 160, 69, 0.6)';
+                    
+                    setTimeout(() => {
+                        ctaButton.style.transform = '';
+                        ctaButton.style.boxShadow = '';
+                    }, 500);
+                }
+            }, 10000);
+        }
+    </script>
+</body>
+</html>
